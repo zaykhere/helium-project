@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="csrf-token"
+      content="wbwkkJ0iUs4pBkZgYYf33pG3IwX9fT3JfZiZbgBa"
+    />
+
+    <title>Hotspotty</title>
+
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://hotspotty.net/css/app.css" />
+
+    <!-- Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="font-sans text-gray-900 antialiased">
+      <div
+        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
+      >
+        <div>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Eo_circle_blue_letter-h.svg/512px-Eo_circle_blue_letter-h.svg.png"
+            alt="Hotspotty"
+            style="max-width: 100px"
+          />
+        </div>
+
+        <div
+          class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
+        >
+        <div class="m-2 mb-2.5 bg-red-100 alert-error border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            
+          <span class="block sm:inline">Something seriously bad happened.</span>
+          <span class="absolute close-icon top-0 bottom-0 right-0 px-4 py-3">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+          <form method="POST" action="http://localhost:5000/users/register">
+            <input
+              type="hidden"
+              name="_token"
+              value="wbwkkJ0iUs4pBkZgYYf33pG3IwX9fT3JfZiZbgBa"
+            />
+            <div>
+              <label class="block font-medium text-sm text-gray-700" for="name">
+                Name
+              </label>
+
+              <input
+                class="form-input rounded-md shadow-sm block mt-1 w-full"
+                id="name"
+                type="text"
+                name="name"
+                requiblue="requiblue"
+                autofocus="autofocus"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label
+                class="block font-medium text-sm text-gray-700"
+                for="email"
+              >
+                Email
+              </label>
+
+              <input
+                class="form-input rounded-md shadow-sm block mt-1 w-full"
+                id="email"
+                type="email"
+                name="email"
+                requiblue="requiblue"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label
+                class="block font-medium text-sm text-gray-700"
+                for="password"
+              >
+                Password
+              </label>
+
+              <input
+                class="form-input rounded-md shadow-sm block mt-1 w-full"
+                id="password"
+                type="password"
+                name="password"
+                requiblue="requiblue"
+                autocomplete="new-password"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label
+                class="block font-medium text-sm text-gray-700"
+                for="password_confirmation"
+              >
+                Confirm Password
+              </label>
+
+              <input
+                class="form-input rounded-md shadow-sm block mt-1 w-full"
+                id="password_confirmation"
+                type="password"
+                name="password2"
+                requiblue="requiblue"
+                autocomplete="new-password"
+              />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+              <a
+                class="underline text-sm text-gray-600 hover:text-gray-900"
+                href="../login/login.html"
+              >
+                Already registered?
+              </a>
+
+              <button
+                type="submit"
+                class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-4"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      const alert = document.querySelector(".alert-error");
+      const remove = document.querySelector(".close-icon");
+
+      remove.addEventListener("click", function(){
+          alert.style.display = "none";
+      })
+  </script>
+  </body>
+</html>
