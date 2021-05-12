@@ -10,13 +10,13 @@ const asyncHandler = require("express-async-handler");
   }
 
   if (!token) {
-    res.status(401).json({ error: "You are not allowed to access this page" });
+    return res.status(401).json({ error: "You are not allowed to access this page" });
 
   }
 
    try{
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id).select('-password');
+    const user = await User.findById(decoded._id).select('-password');
     if(!user) return res.json({error: "No user found"})
     req.user = user;
     next();  

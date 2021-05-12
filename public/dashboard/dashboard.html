@@ -1,0 +1,503 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="wOKsnXMi7Hhfkl3VqFfuHWk9UwfEh5hQbimh4x9q">
+
+    <title>Hotspotty - Helium Hotspot Manager</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap">
+
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+        var Ziggy = {
+            namedRoutes: { "debugbar.openhandler": { "uri": "_debugbar\/open", "methods": ["GET", "HEAD"], "domain": null }, "debugbar.clockwork": { "uri": "_debugbar\/clockwork\/{id}", "methods": ["GET", "HEAD"], "domain": null }, "debugbar.telescope": { "uri": "_debugbar\/telescope\/{id}", "methods": ["GET", "HEAD"], "domain": null }, "debugbar.assets.css": { "uri": "_debugbar\/assets\/stylesheets", "methods": ["GET", "HEAD"], "domain": null }, "debugbar.assets.js": { "uri": "_debugbar\/assets\/javascript", "methods": ["GET", "HEAD"], "domain": null }, "debugbar.cache.delete": { "uri": "_debugbar\/cache\/{key}\/{tags?}", "methods": ["DELETE"], "domain": null }, "login": { "uri": "login", "methods": ["GET", "HEAD"], "domain": null }, "generated::qtQ4uikynFHgIamx": { "uri": "login", "methods": ["POST"], "domain": null }, "logout": { "uri": "logout", "methods": ["POST"], "domain": null }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"], "domain": null }, "password.reset": { "uri": "reset-password\/{token}", "methods": ["GET", "HEAD"], "domain": null }, "password.email": { "uri": "forgot-password", "methods": ["POST"], "domain": null }, "password.update": { "uri": "reset-password", "methods": ["POST"], "domain": null }, "register": { "uri": "register", "methods": ["GET", "HEAD"], "domain": null }, "generated::v7pbxI5595ReVpfg": { "uri": "register", "methods": ["POST"], "domain": null }, "verification.notice": { "uri": "email\/verify", "methods": ["GET", "HEAD"], "domain": null }, "verification.verify": { "uri": "email\/verify\/{id}\/{hash}", "methods": ["GET", "HEAD"], "domain": null }, "verification.send": { "uri": "email\/verification-notification", "methods": ["POST"], "domain": null }, "user-profile-information.update": { "uri": "user\/profile-information", "methods": ["PUT"], "domain": null }, "user-password.update": { "uri": "user\/password", "methods": ["PUT"], "domain": null }, "password.confirm": { "uri": "user\/confirm-password", "methods": ["GET", "HEAD"], "domain": null }, "password.confirmation": { "uri": "user\/confirmed-password-status", "methods": ["GET", "HEAD"], "domain": null }, "generated::zfWVXeWzgM8E6zs3": { "uri": "user\/confirm-password", "methods": ["POST"], "domain": null }, "two-factor.login": { "uri": "two-factor-challenge", "methods": ["GET", "HEAD"], "domain": null }, "generated::GVXWAzrwf6K6L2bC": { "uri": "two-factor-challenge", "methods": ["POST"], "domain": null }, "generated::8ffQZMcheXycPHvK": { "uri": "user\/two-factor-authentication", "methods": ["POST"], "domain": null }, "generated::R9rLmXaU6DPFaxRi": { "uri": "user\/two-factor-authentication", "methods": ["DELETE"], "domain": null }, "generated::9T5GmIovcGc5sh2P": { "uri": "user\/two-factor-qr-code", "methods": ["GET", "HEAD"], "domain": null }, "generated::uINrlxTb5qRZOfxH": { "uri": "user\/two-factor-recovery-codes", "methods": ["GET", "HEAD"], "domain": null }, "generated::A5wBTU75GedNh1tv": { "uri": "user\/two-factor-recovery-codes", "methods": ["POST"], "domain": null }, "profile.show": { "uri": "user\/profile", "methods": ["GET", "PUT", "HEAD"], "domain": null }, "other-browser-sessions.destroy": { "uri": "user\/other-browser-sessions", "methods": ["DELETE"], "domain": null }, "current-user.destroy": { "uri": "user", "methods": ["DELETE"], "domain": null }, "current-user-photo.destroy": { "uri": "user\/profile-photo", "methods": ["DELETE"], "domain": null }, "generated::1C7aQbGCQoYIJ7Er": { "uri": "sanctum\/csrf-cookie", "methods": ["GET", "HEAD"], "domain": null }, "generated::yzYYxDhYbT7p0nUP": { "uri": "api\/user", "methods": ["GET", "HEAD"], "domain": null }, "generated::KqkxCPCILHdTu5dx": { "uri": "\/", "methods": ["GET", "HEAD"], "domain": null }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"], "domain": null }, "hotspots": { "uri": "hotspots", "methods": ["GET", "HEAD"], "domain": null }, "hotspot": { "uri": "hotspot\/{address}", "methods": ["GET", "HEAD"], "domain": null }, "generated::yuWHdBmxTfNHKrml": { "uri": "hotspots", "methods": ["POST"], "domain": null }, "generated::aQqBD4UdTjass5zy": { "uri": "hotspots\/{id}", "methods": ["GET", "HEAD"], "domain": null }, "hosts": { "uri": "hosts", "methods": ["GET", "HEAD"], "domain": null }, "host": { "uri": "hosts\/{uuid}", "methods": ["GET", "HEAD"], "domain": null }, "referral": { "uri": "referrals\/{uuid}", "methods": ["GET", "HEAD"], "domain": null }, "partner": { "uri": "partners\/{uuid}", "methods": ["GET", "HEAD"], "domain": null }, "hosts-add-new": { "uri": "hosts", "methods": ["POST"], "domain": null }, "referral-add-new": { "uri": "referral", "methods": ["POST"], "domain": null }, "partner-add-new": { "uri": "partner", "methods": ["POST"], "domain": null }, "host-edit": { "uri": "hosts\/{uuid}", "methods": ["POST"], "domain": null }, "referral-edit": { "uri": "referrals\/{uuid}", "methods": ["POST"], "domain": null }, "partner-edit": { "uri": "partners\/{uuid}", "methods": ["POST"], "domain": null }, "host-pay": { "uri": "hosts\/record-payment\/{uuid}", "methods": ["POST"], "domain": null }, "referral-pay": { "uri": "referrals\/record-payment\/{uuid}", "methods": ["POST"], "domain": null }, "partner-pay": { "uri": "partners\/record-payment\/{uuid}", "methods": ["POST"], "domain": null }, "attach-host": { "uri": "hotspot\/{address}\/host", "methods": ["POST"], "domain": null }, "attach-referral": { "uri": "hotspot\/{address}\/referral", "methods": ["POST"], "domain": null }, "attach-partner": { "uri": "hotspot\/{address}\/partner", "methods": ["POST"], "domain": null }, "queue-monitor::index": { "uri": "jobs", "methods": ["GET", "HEAD"], "domain": null }, "update-wallet": { "uri": "user\/update-wallet", "methods": ["POST"], "domain": null }, "excel-export": { "uri": "excel-export\/{uuid}\/{days}", "methods": ["GET", "HEAD"], "domain": null } },
+            baseUrl: 'https://hotspotty.net/',
+            baseProtocol: 'https',
+            baseDomain: 'hotspotty.net',
+            basePort: false,
+            defaultParameters: []
+        };
+
+        !function (e, t) { "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("route", [], t) : "object" == typeof exports ? exports.route = t() : e.route = t() }(this, function () { return function (e) { var t = {}; function r(n) { if (t[n]) return t[n].exports; var o = t[n] = { i: n, l: !1, exports: {} }; return e[n].call(o.exports, o, o.exports, r), o.l = !0, o.exports } return r.m = e, r.c = t, r.d = function (e, t, n) { r.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: n }) }, r.r = function (e) { "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(e, "__esModule", { value: !0 }) }, r.t = function (e, t) { if (1 & t && (e = r(e)), 8 & t) return e; if (4 & t && "object" == typeof e && e && e.__esModule) return e; var n = Object.create(null); if (r.r(n), Object.defineProperty(n, "default", { enumerable: !0, value: e }), 2 & t && "string" != typeof e) for (var o in e) r.d(n, o, function (t) { return e[t] }.bind(null, o)); return n }, r.n = function (e) { var t = e && e.__esModule ? function () { return e.default } : function () { return e }; return r.d(t, "a", t), t }, r.o = function (e, t) { return Object.prototype.hasOwnProperty.call(e, t) }, r.p = "", r(r.s = 5) }([function (e, t, r) { "use strict"; var n = Object.prototype.hasOwnProperty, o = Array.isArray, i = function () { for (var e = [], t = 0; t < 256; ++t)e.push("%" + ((t < 16 ? "0" : "") + t.toString(16)).toUpperCase()); return e }(), a = function (e, t) { for (var r = t && t.plainObjects ? Object.create(null) : {}, n = 0; n < e.length; ++n)void 0 !== e[n] && (r[n] = e[n]); return r }; e.exports = { arrayToObject: a, assign: function (e, t) { return Object.keys(t).blueuce(function (e, r) { return e[r] = t[r], e }, e) }, combine: function (e, t) { return [].concat(e, t) }, compact: function (e) { for (var t = [{ obj: { o: e }, prop: "o" }], r = [], n = 0; n < t.length; ++n)for (var i = t[n], a = i.obj[i.prop], u = Object.keys(a), c = 0; c < u.length; ++c) { var l = u[c], s = a[l]; "object" == typeof s && null !== s && -1 === r.indexOf(s) && (t.push({ obj: a, prop: l }), r.push(s)) } return function (e) { for (; e.length > 1;) { var t = e.pop(), r = t.obj[t.prop]; if (o(r)) { for (var n = [], i = 0; i < r.length; ++i)void 0 !== r[i] && n.push(r[i]); t.obj[t.prop] = n } } }(t), e }, decode: function (e, t, r) { var n = e.replace(/\+/g, " "); if ("iso-8859-1" === r) return n.replace(/%[0-9a-f]{2}/gi, unescape); try { return decodeURIComponent(n) } catch (e) { return n } }, encode: function (e, t, r) { if (0 === e.length) return e; var n = e; if ("symbol" == typeof e ? n = Symbol.prototype.toString.call(e) : "string" != typeof e && (n = String(e)), "iso-8859-1" === r) return escape(n).replace(/%u[0-9a-f]{4}/gi, function (e) { return "%26%23" + parseInt(e.slice(2), 16) + "%3B" }); for (var o = "", a = 0; a < n.length; ++a) { var u = n.charCodeAt(a); 45 === u || 46 === u || 95 === u || 126 === u || u >= 48 && u <= 57 || u >= 65 && u <= 90 || u >= 97 && u <= 122 ? o += n.charAt(a) : u < 128 ? o += i[u] : u < 2048 ? o += i[192 | u >> 6] + i[128 | 63 & u] : u < 55296 || u >= 57344 ? o += i[224 | u >> 12] + i[128 | u >> 6 & 63] + i[128 | 63 & u] : (a += 1, u = 65536 + ((1023 & u) << 10 | 1023 & n.charCodeAt(a)), o += i[240 | u >> 18] + i[128 | u >> 12 & 63] + i[128 | u >> 6 & 63] + i[128 | 63 & u]) } return o }, isBuffer: function (e) { return !(!e || "object" != typeof e || !(e.constructor && e.constructor.isBuffer && e.constructor.isBuffer(e))) }, isRegExp: function (e) { return "[object RegExp]" === Object.prototype.toString.call(e) }, merge: function e(t, r, i) { if (!r) return t; if ("object" != typeof r) { if (o(t)) t.push(r); else { if (!t || "object" != typeof t) return [t, r]; (i && (i.plainObjects || i.allowPrototypes) || !n.call(Object.prototype, r)) && (t[r] = !0) } return t } if (!t || "object" != typeof t) return [t].concat(r); var u = t; return o(t) && !o(r) && (u = a(t, i)), o(t) && o(r) ? (r.forEach(function (r, o) { if (n.call(t, o)) { var a = t[o]; a && "object" == typeof a && r && "object" == typeof r ? t[o] = e(a, r, i) : t.push(r) } else t[o] = r }), t) : Object.keys(r).blueuce(function (t, o) { var a = r[o]; return n.call(t, o) ? t[o] = e(t[o], a, i) : t[o] = a, t }, u) } } }, function (e, t, r) { "use strict"; var n = String.prototype.replace, o = /%20/g, i = r(0), a = { RFC1738: "RFC1738", RFC3986: "RFC3986" }; e.exports = i.assign({ default: a.RFC3986, formatters: { RFC1738: function (e) { return n.call(e, o, "+") }, RFC3986: function (e) { return String(e) } } }, a) }, function (e, t, r) { "use strict"; var n = r(3), o = r(4), i = r(1); e.exports = { formats: i, parse: o, stringify: n } }, function (e, t, r) { "use strict"; var n = r(0), o = r(1), i = Object.prototype.hasOwnProperty, a = { brackets: function (e) { return e + "[]" }, comma: "comma", indices: function (e, t) { return e + "[" + t + "]" }, repeat: function (e) { return e } }, u = Array.isArray, c = Array.prototype.push, l = function (e, t) { c.apply(e, u(t) ? t : [t]) }, s = Date.prototype.toISOString, f = o.default, p = { addQueryPrefix: !1, allowDots: !1, charset: "utf-8", charsetSentinel: !1, delimiter: "&", encode: !0, encoder: n.encode, encodeValuesOnly: !1, format: f, formatter: o.formatters[f], indices: !1, serializeDate: function (e) { return s.call(e) }, skipNulls: !1, strictNullHandling: !1 }, d = function e(t, r, o, i, a, c, s, f, d, y, h, m, b) { var g, v = t; if ("function" == typeof s ? v = s(r, v) : v instanceof Date ? v = y(v) : "comma" === o && u(v) && (v = v.join(",")), null === v) { if (i) return c && !m ? c(r, p.encoder, b) : r; v = "" } if ("string" == typeof (g = v) || "number" == typeof g || "boolean" == typeof g || "symbol" == typeof g || "bigint" == typeof g || n.isBuffer(v)) return c ? [h(m ? r : c(r, p.encoder, b)) + "=" + h(c(v, p.encoder, b))] : [h(r) + "=" + h(String(v))]; var O, w = []; if (void 0 === v) return w; if (u(s)) O = s; else { var j = Object.keys(v); O = f ? j.sort(f) : j } for (var P = 0; P < O.length; ++P) { var x = O[P]; a && null === v[x] || (u(v) ? l(w, e(v[x], "function" == typeof o ? o(r, x) : r, o, i, a, c, s, f, d, y, h, m, b)) : l(w, e(v[x], r + (d ? "." + x : "[" + x + "]"), o, i, a, c, s, f, d, y, h, m, b))) } return w }; e.exports = function (e, t) { var r, n = e, c = function (e) { if (!e) return p; if (null !== e.encoder && void 0 !== e.encoder && "function" != typeof e.encoder) throw new TypeError("Encoder has to be a function."); var t = e.charset || p.charset; if (void 0 !== e.charset && "utf-8" !== e.charset && "iso-8859-1" !== e.charset) throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined"); var r = o.default; if (void 0 !== e.format) { if (!i.call(o.formatters, e.format)) throw new TypeError("Unknown format option provided."); r = e.format } var n = o.formatters[r], a = p.filter; return ("function" == typeof e.filter || u(e.filter)) && (a = e.filter), { addQueryPrefix: "boolean" == typeof e.addQueryPrefix ? e.addQueryPrefix : p.addQueryPrefix, allowDots: void 0 === e.allowDots ? p.allowDots : !!e.allowDots, charset: t, charsetSentinel: "boolean" == typeof e.charsetSentinel ? e.charsetSentinel : p.charsetSentinel, delimiter: void 0 === e.delimiter ? p.delimiter : e.delimiter, encode: "boolean" == typeof e.encode ? e.encode : p.encode, encoder: "function" == typeof e.encoder ? e.encoder : p.encoder, encodeValuesOnly: "boolean" == typeof e.encodeValuesOnly ? e.encodeValuesOnly : p.encodeValuesOnly, filter: a, formatter: n, serializeDate: "function" == typeof e.serializeDate ? e.serializeDate : p.serializeDate, skipNulls: "boolean" == typeof e.skipNulls ? e.skipNulls : p.skipNulls, sort: "function" == typeof e.sort ? e.sort : null, strictNullHandling: "boolean" == typeof e.strictNullHandling ? e.strictNullHandling : p.strictNullHandling } }(t); "function" == typeof c.filter ? n = (0, c.filter)("", n) : u(c.filter) && (r = c.filter); var s, f = []; if ("object" != typeof n || null === n) return ""; s = t && t.arrayFormat in a ? t.arrayFormat : t && "indices" in t ? t.indices ? "indices" : "repeat" : "indices"; var y = a[s]; r || (r = Object.keys(n)), c.sort && r.sort(c.sort); for (var h = 0; h < r.length; ++h) { var m = r[h]; c.skipNulls && null === n[m] || l(f, d(n[m], m, y, c.strictNullHandling, c.skipNulls, c.encode ? c.encoder : null, c.filter, c.sort, c.allowDots, c.serializeDate, c.formatter, c.encodeValuesOnly, c.charset)) } var b = f.join(c.delimiter), g = !0 === c.addQueryPrefix ? "?" : ""; return c.charsetSentinel && ("iso-8859-1" === c.charset ? g += "utf8=%26%2310003%3B&" : g += "utf8=%E2%9C%93&"), b.length > 0 ? g + b : "" } }, function (e, t, r) { "use strict"; var n = r(0), o = Object.prototype.hasOwnProperty, i = { allowDots: !1, allowPrototypes: !1, arrayLimit: 20, charset: "utf-8", charsetSentinel: !1, comma: !1, decoder: n.decode, delimiter: "&", depth: 5, ignoreQueryPrefix: !1, interpretNumericEntities: !1, parameterLimit: 1e3, parseArrays: !0, plainObjects: !1, strictNullHandling: !1 }, a = function (e) { return e.replace(/&#(\d+);/g, function (e, t) { return String.fromCharCode(parseInt(t, 10)) }) }, u = function (e, t, r) { if (e) { var n = r.allowDots ? e.replace(/\.([^.[]+)/g, "[$1]") : e, i = /(\[[^[\]]*])/g, a = r.depth > 0 && /(\[[^[\]]*])/.exec(n), u = a ? n.slice(0, a.index) : n, c = []; if (u) { if (!r.plainObjects && o.call(Object.prototype, u) && !r.allowPrototypes) return; c.push(u) } for (var l = 0; r.depth > 0 && null !== (a = i.exec(n)) && l < r.depth;) { if (l += 1, !r.plainObjects && o.call(Object.prototype, a[1].slice(1, -1)) && !r.allowPrototypes) return; c.push(a[1]) } return a && c.push("[" + n.slice(a.index) + "]"), function (e, t, r) { for (var n = t, o = e.length - 1; o >= 0; --o) { var i, a = e[o]; if ("[]" === a && r.parseArrays) i = [].concat(n); else { i = r.plainObjects ? Object.create(null) : {}; var u = "[" === a.charAt(0) && "]" === a.charAt(a.length - 1) ? a.slice(1, -1) : a, c = parseInt(u, 10); r.parseArrays || "" !== u ? !isNaN(c) && a !== u && String(c) === u && c >= 0 && r.parseArrays && c <= r.arrayLimit ? (i = [])[c] = n : i[u] = n : i = { 0: n } } n = i } return n }(c, t, r) } }; e.exports = function (e, t) { var r = function (e) { if (!e) return i; if (null !== e.decoder && void 0 !== e.decoder && "function" != typeof e.decoder) throw new TypeError("Decoder has to be a function."); if (void 0 !== e.charset && "utf-8" !== e.charset && "iso-8859-1" !== e.charset) throw new Error("The charset option must be either utf-8, iso-8859-1, or undefined"); var t = void 0 === e.charset ? i.charset : e.charset; return { allowDots: void 0 === e.allowDots ? i.allowDots : !!e.allowDots, allowPrototypes: "boolean" == typeof e.allowPrototypes ? e.allowPrototypes : i.allowPrototypes, arrayLimit: "number" == typeof e.arrayLimit ? e.arrayLimit : i.arrayLimit, charset: t, charsetSentinel: "boolean" == typeof e.charsetSentinel ? e.charsetSentinel : i.charsetSentinel, comma: "boolean" == typeof e.comma ? e.comma : i.comma, decoder: "function" == typeof e.decoder ? e.decoder : i.decoder, delimiter: "string" == typeof e.delimiter || n.isRegExp(e.delimiter) ? e.delimiter : i.delimiter, depth: "number" == typeof e.depth || !1 === e.depth ? +e.depth : i.depth, ignoreQueryPrefix: !0 === e.ignoreQueryPrefix, interpretNumericEntities: "boolean" == typeof e.interpretNumericEntities ? e.interpretNumericEntities : i.interpretNumericEntities, parameterLimit: "number" == typeof e.parameterLimit ? e.parameterLimit : i.parameterLimit, parseArrays: !1 !== e.parseArrays, plainObjects: "boolean" == typeof e.plainObjects ? e.plainObjects : i.plainObjects, strictNullHandling: "boolean" == typeof e.strictNullHandling ? e.strictNullHandling : i.strictNullHandling } }(t); if ("" === e || null == e) return r.plainObjects ? Object.create(null) : {}; for (var c = "string" == typeof e ? function (e, t) { var r, u = {}, c = t.ignoreQueryPrefix ? e.replace(/^\?/, "") : e, l = t.parameterLimit === 1 / 0 ? void 0 : t.parameterLimit, s = c.split(t.delimiter, l), f = -1, p = t.charset; if (t.charsetSentinel) for (r = 0; r < s.length; ++r)0 === s[r].indexOf("utf8=") && ("utf8=%E2%9C%93" === s[r] ? p = "utf-8" : "utf8=%26%2310003%3B" === s[r] && (p = "iso-8859-1"), f = r, r = s.length); for (r = 0; r < s.length; ++r)if (r !== f) { var d, y, h = s[r], m = h.indexOf("]="), b = -1 === m ? h.indexOf("=") : m + 1; -1 === b ? (d = t.decoder(h, i.decoder, p), y = t.strictNullHandling ? null : "") : (d = t.decoder(h.slice(0, b), i.decoder, p), y = t.decoder(h.slice(b + 1), i.decoder, p)), y && t.interpretNumericEntities && "iso-8859-1" === p && (y = a(y)), y && t.comma && y.indexOf(",") > -1 && (y = y.split(",")), o.call(u, d) ? u[d] = n.combine(u[d], y) : u[d] = y } return u }(e, r) : e, l = r.plainObjects ? Object.create(null) : {}, s = Object.keys(c), f = 0; f < s.length; ++f) { var p = s[f], d = u(p, c[p], r); l = n.merge(l, d, r) } return n.compact(l) } }, function (e, t, r) { "use strict"; function n(e, t) { for (var r = 0; r < t.length; r++) { var n = t[r]; n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n) } } r.r(t); var o = function () { function e(t, r, n) { if (function (e, t) { if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function") }(this, e), this.name = t, this.ziggy = n, this.route = this.ziggy.namedRoutes[this.name], void 0 === this.name) throw new Error("Ziggy Error: You must provide a route name"); if (void 0 === this.route) throw new Error("Ziggy Error: route '".concat(this.name, "' is not found in the route list")); this.absolute = void 0 === r || r, this.domain = this.setDomain(), this.path = this.route.uri.replace(/^\//, "") } var t, r; return t = e, (r = [{ key: "setDomain", value: function () { if (!this.absolute) return "/"; if (!this.route.domain) return this.ziggy.baseUrl.replace(/\/?$/, "/"); var e = (this.route.domain || this.ziggy.baseDomain).replace(/\/+$/, ""); return this.ziggy.basePort && e.replace(/\/+$/, "") === this.ziggy.baseDomain.replace(/\/+$/, "") && (e = this.ziggy.baseDomain + ":" + this.ziggy.basePort), this.ziggy.baseProtocol + "://" + e + "/" } }, { key: "construct", value: function () { return this.domain + this.path } }]) && n(t.prototype, r), e }(), i = r(2); function a() { return (a = Object.assign || function (e) { for (var t = 1; t < arguments.length; t++) { var r = arguments[t]; for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]) } return e }).apply(this, arguments) } function u(e) { return (u = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) { return typeof e } : function (e) { return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e })(e) } function c(e, t) { for (var r = 0; r < t.length; r++) { var n = t[r]; n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n) } } function l(e) { var t = "function" == typeof Map ? new Map : void 0; return (l = function (e) { if (null === e || (r = e, -1 === Function.toString.call(r).indexOf("[native code]"))) return e; var r; if ("function" != typeof e) throw new TypeError("Super expression must either be null or a function"); if (void 0 !== t) { if (t.has(e)) return t.get(e); t.set(e, n) } function n() { return function (e, t, r) { return (function () { if ("undefined" == typeof Reflect || !Reflect.construct) return !1; if (Reflect.construct.sham) return !1; if ("function" == typeof Proxy) return !0; try { return Date.prototype.toString.call(Reflect.construct(Date, [], function () { })), !0 } catch (e) { return !1 } }() ? Reflect.construct : function (e, t, r) { var n = [null]; n.push.apply(n, t); var o = new (Function.bind.apply(e, n)); return r && s(o, r.prototype), o }).apply(null, arguments) }(e, arguments, f(this).constructor) } return n.prototype = Object.create(e.prototype, { constructor: { value: n, enumerable: !1, writable: !0, configurable: !0 } }), s(n, e) })(e) } function s(e, t) { return (s = Object.setPrototypeOf || function (e, t) { return e.__proto__ = t, e })(e, t) } function f(e) { return (f = Object.setPrototypeOf ? Object.getPrototypeOf : function (e) { return e.__proto__ || Object.getPrototypeOf(e) })(e) } r.d(t, "default", function () { return d }); var p = function (e) { function t(e, r, n) { var i, a = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : null; return function (e, t) { if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function") }(this, t), (i = function (e, t) { return !t || "object" !== u(t) && "function" != typeof t ? function (e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e }(e) : t }(this, f(t).call(this))).name = e, i.absolute = n, i.ziggy = a || Ziggy, i.urlBuilder = i.name ? new o(e, n, i.ziggy) : null, i.template = i.urlBuilder ? i.urlBuilder.construct() : "", i.urlParams = i.normalizeParams(r), i.queryParams = {}, i.hydrated = "", i } var r, n; return function (e, t) { if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function"); e.prototype = Object.create(t && t.prototype, { constructor: { value: e, writable: !0, configurable: !0 } }), t && s(e, t) }(t, l(String)), r = t, (n = [{ key: "normalizeParams", value: function (e) { return void 0 === e ? {} : ((e = "object" !== u(e) ? [e] : e).hasOwnProperty("id") && -1 == this.template.indexOf("{id}") && (e = [e.id]), this.numericParamIndices = Array.isArray(e), a({}, e)) } }, { key: "with", value: function (e) { return this.urlParams = this.normalizeParams(e), this } }, { key: "withQuery", value: function (e) { return a(this.queryParams, e), this } }, { key: "hydrateUrl", value: function () { var e = this; if (this.hydrated) return this.hydrated; var t = this.template.replace(/{([^}]+)}/gi, function (t, r) { var n, o, i = e.trimParam(t); if (e.ziggy.defaultParameters.hasOwnProperty(i) && (n = e.ziggy.defaultParameters[i]), n && !e.urlParams[i]) return delete e.urlParams[i], n; if (e.numericParamIndices ? (e.urlParams = Object.values(e.urlParams), o = e.urlParams.shift()) : (o = e.urlParams[i], delete e.urlParams[i]), void 0 === o) { if (-1 === t.indexOf("?")) throw new Error("Ziggy Error: '" + i + "' key is requiblue for route '" + e.name + "'"); return "" } return o.id ? encodeURIComponent(o.id) : encodeURIComponent(o) }); return null != this.urlBuilder && "" !== this.urlBuilder.path && (t = t.replace(/\/+$/, "")), this.hydrated = t, this.hydrated } }, { key: "matchUrl", value: function () { var e = window.location.hostname + (window.location.port ? ":" + window.location.port : "") + window.location.pathname, t = this.template.replace(/(\/\{[^\}]*\?\})/g, "/").replace(/(\{[^\}]*\})/gi, "[^/?]+").replace(/\/?$/, "").split("://")[1], r = this.template.replace(/(\{[^\}]*\})/gi, "[^/?]+").split("://")[1], n = e.replace(/\/?$/, "/"), o = new RegExp("^" + r + "/$").test(n), i = new RegExp("^" + t + "/$").test(n); return o || i } }, { key: "constructQuery", value: function () { if (0 === Object.keys(this.queryParams).length && 0 === Object.keys(this.urlParams).length) return ""; var e = a(this.urlParams, this.queryParams); return Object(i.stringify)(e, { encodeValuesOnly: !0, skipNulls: !0, addQueryPrefix: !0, arrayFormat: "indices" }) } }, { key: "current", value: function () { var e = this, r = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, n = Object.keys(this.ziggy.namedRoutes), o = n.filter(function (r) { return -1 !== e.ziggy.namedRoutes[r].methods.indexOf("GET") && new t(r, void 0, void 0, e.ziggy).matchUrl() })[0]; if (r) { var i = new RegExp("^" + r.replace("*", ".*").replace(".", ".") + "$", "i"); return i.test(o) } return o } }, { key: "check", value: function (e) { return Object.keys(this.ziggy.namedRoutes).includes(e) } }, { key: "extractParams", value: function (e, t, r) { var n = this, o = e.split(r); return t.split(r).blueuce(function (e, t, r) { return 0 === t.indexOf("{") && -1 !== t.indexOf("}") && o[r] ? a(e, (i = {}, u = n.trimParam(t), c = o[r], u in i ? Object.defineProperty(i, u, { value: c, enumerable: !0, configurable: !0, writable: !0 }) : i[u] = c, i)) : e; var i, u, c }, {}) } }, { key: "parse", value: function () { this.return = this.hydrateUrl() + this.constructQuery() } }, { key: "url", value: function () { return this.parse(), this.return } }, { key: "toString", value: function () { return this.url() } }, { key: "trimParam", value: function (e) { return e.replace(/{|}|\?/g, "") } }, { key: "valueOf", value: function () { return this.url() } }, { key: "params", get: function () { var e = this.ziggy.namedRoutes[this.current()]; return a(this.extractParams(window.location.hostname, e.domain || "", "."), this.extractParams(window.location.pathname.slice(1), e.uri, "/")) } }]) && c(r.prototype, n), t }(); function d(e, t, r, n) { return new p(e, t, r, n) } }]).default });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer=""></script>
+
+    <script src="/js/app.js" defer=""></script>
+    <style type="text/css">
+        /* Chart.js */
+        /*
+* DOM element rendering detection
+* https://davidwalsh.name/detect-node-insertion
+*/
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .chartjs-render-monitor {
+            animation: chartjs-render-animation 0.001s;
+        }
+
+        /*
+* DOM element resizing detection
+* https://github.com/marcj/css-element-queries
+*/
+        .chartjs-size-monitor,
+        .chartjs-size-monitor-expand,
+        .chartjs-size-monitor-shrink {
+            position: absolute;
+            direction: ltr;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1;
+        }
+
+        .chartjs-size-monitor-expand>div {
+            position: absolute;
+            width: 1000000px;
+            height: 1000000px;
+            left: 0;
+            top: 0;
+        }
+
+        .chartjs-size-monitor-shrink>div {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+
+
+
+
+    <div class="min-h-screen bg-gray-100">
+
+        <div id="myNav" class="overlay" style="    background-color: rgb(255, 255, 255);
+        background-color: rgb(255, 255, 255);">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="../dashboard/dashboard.html">Dashboard</a>
+                <a href="../hotspot/hotspot.html">Hotspot</a>
+                <a href="../profile/profile.html">Profile</a>
+                <a href="../index.html">Logout</a>
+            </div>
+        </div>
+
+
+        <nav class="bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center">
+                            <a href="../dashboard/dashboard.html">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Eo_circle_blue_letter-h.svg/512px-Eo_circle_blue_letter-h.svg.png"
+                                    alt="Hotspotty" class="block h-9 w-auto">
+                            </a>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <a href="../dashboard/dashboard.html"
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                                Dashboard
+                            </a>
+                            <a href="../hotspot/hotspot.html"
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Hotspots
+                            </a>
+                            <a href="../profile/profile.html"
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Profile
+                            </a>
+                            <a href="../index.html"
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Logout
+                            </a>
+                            <a
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                <div class="hidden sm:flex">
+                                    <div class="relative">
+                                        <div>
+                                        </div>
+                                        <div class="fixed inset-0 z-40" style="display: none;">
+                                        </div>
+                                        <div class="absolute z-50 mt-2 rounded-md shadow-lg w-48 origin-top-left left-0"
+                                            style="display: none;">
+                                            <div class="rounded-md shadow-xs py-1 bg-white">
+                                                <div>
+                                                    <a
+                                                        class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div class="ml-3 relative">
+                            <div class="relative">
+                                <div>
+                                    <button
+                                        class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                        <img src="https://ui-avatars.com/api/?name=Nabeel+khanjee&amp;color=7F9CF5&amp;background=EBF4FF"
+                                            alt="Nabeel khanjee" class="h-8 w-8 rounded-full object-cover">
+                                    </button>
+                                </div>
+
+                                <div class="absolute z-50 mt-2 rounded-md shadow-lg w-48 origin-top-right right-0"
+                                    style="display: none;">
+                                    <div class="rounded-md shadow-xs py-1 bg-white">
+                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                            Manage Account
+                                        </div>
+                                        <div>
+                                            <a href="../profile/profile.html"
+                                                class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                                Profile
+                                            </a>
+                                        </div>
+                                        <!---->
+                                        <div class="border-t border-gray-100">
+
+                                        </div>
+                                        <!---->
+                                        <form>
+                                            <div>
+                                                <button type="submit"
+                                                    class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                                    Logout
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="-mr-2 flex items-center sm:hidden">
+
+                        <button
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+
+                            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+                            <!-- 
+                            <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" class="inline-flex">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" class="hidden">
+                                </path>
+                            </svg> -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="sm:hidden hidden">
+                <div class="pt-2 pb-3 space-y-1">
+                    <div>
+                        <a href="../dashboard/dashboard.html"
+                            class="block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">
+                            Dashboard
+                        </a>
+                    </div>
+                    <div>
+                        <a href="../hotspot/hotspot.html"
+                            class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                            Hotspots
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <a
+                            class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-1 border-t border-gray-200">
+                    <div class="flex items-center px-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://ui-avatars.com/api/?name=Nabeel+khanjee&amp;color=7F9CF5&amp;background=EBF4FF"
+                                alt="Nabeel khanjee" class="h-10 w-10 rounded-full">
+                        </div>
+                        <div class="ml-3">
+                            <div class="font-medium text-base text-gray-800">Nabeel khanjee</div>
+                            <div class="font-medium text-sm text-gray-500">nabeelshakeel966@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="mt-3 space-y-1">
+                        <div><a href="../profile/profile.html"
+                                class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Profile
+                            </a></div>
+                        <!---->
+                        <form method="POST">
+                            <div><button
+                                    class="w-full text-left block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    Logout
+                                </button>
+                            </div>
+                        </form>
+                        <!---->
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Dashboard
+                </h2>
+            </div>
+        </header>
+        <main>
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div>
+                            <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+                                <div class="mt-8 text-2xl">
+                                    Welcome to your Helium Hotspots Manager!
+                                </div>
+                            </div>
+                            <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
+                                <div class="p-6">
+                                    <div class="flex items-center"><svg fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                            class="w-8 h-8 text-gray-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                            </path>
+                                        </svg>
+                                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="#">30
+                                                Day Rewards</a></div>
+                                    </div>
+                                    <div
+                                        class="mt-2 text-sm text-gray-500 bg-white rounded-lg shadow-xl pl-4 pr-4 pt-2 pb-2">
+                                        <div class="mt-2 text-sm text-gray-500">
+                                            <div class="" style="height: 250px;">
+                                                <div class="chartjs-size-monitor">
+                                                    <div class="chartjs-size-monitor-expand">
+                                                        <div class=""></div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink">
+                                                        <div class=""></div>
+                                                    </div>
+                                                </div><canvas id="bar-chart" width="440" height="275"
+                                                    class="chartjs-render-monitor"
+                                                    style="display: block; height: 250px; width: 400px;"></canvas>
+                                            </div>
+                                            <div class="md:flex">
+                                                <div class="w-full md:w-1/4">
+                                                    <div class="flex flex-row bg-white py-4">
+                                                        <div
+                                                            class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
+                                                            <div class="text-sm  text-center">Today</div>
+                                                            <div class="font-bold text-lg text-center"> <span
+                                                                    class="text-sm">HNT</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full md:w-1/4">
+                                                    <div class="flex flex-row bg-white py-4">
+                                                        <div
+                                                            class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
+                                                            <div class="text-sm  text-center">Yesterday</div>
+                                                            <div class="font-bold text-lg text-center"> <span
+                                                                    class="text-sm">HNT</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full md:w-1/4">
+                                                    <div class="flex flex-row bg-white py-4">
+                                                        <div
+                                                            class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
+                                                            <div class="text-sm  text-center">7 Day Average</div>
+                                                            <div class="font-bold text-lg text-center">0 <span
+                                                                    class="text-sm">HNT</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full md:w-1/4">
+                                                    <div class="flex flex-row bg-white py-4">
+                                                        <div
+                                                            class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
+                                                            <div class="text-sm  text-center">30 Day Average</div>
+                                                            <div class="font-bold text-lg text-center">0 <span
+                                                                    class="text-sm">HNT</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center mt-10">
+                                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"></div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <div class="flex items-center justify-center">
+                                            <div class="w-full max-w-3xl">
+                                                <div class="md:flex">
+                                                    <div class="w-full md:w-1/4">
+                                                        <div
+                                                            class="border-r border-transparent md:border-gray-50 shadow-sm mb-4">
+                                                            <div
+                                                                class="rounded-l-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
+                                    <div class="flex items-center"><svg fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                            class="w-8 h-8 text-gray-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a
+                                                href="#">Wallet Rewards</a></div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500 bg-white rounded-lg shadow-xl">
+                                        <div>
+                                            <div class="p-4">
+                                                You are currently not following any wallets. Go to
+                                                <b><a href="../profile/profile.html"
+                                                        class="hover:text-blue-800">Profile</a></b> to add new wallet
+                                                addresses.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="vue-portal-target">
+            <div class="fixed top-0 inset-x-0 px-4 pt-6 sm:px-0 sm:flex sm:items-top sm:justify-center"
+                style="display: none;">
+                <div class="fixed inset-0 transform transition-all" style="display: none;">
+                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:max-w-2xl"
+                    style="display: none;">
+                    <div class="px-6 py-4">
+                        <div class="text-lg"></div>
+                        <div class="mt-4">
+                            <p>We have been working very hard to add value and help the helium community, your support
+                                allow us to write code and improve the network.</p> <br>
+                            <div class="flex justify-center mt-4"><img src="../images/qrcode.png"></div>
+                            <div class="flex justify-center mt-4 hidden md:block">
+                                <p class="text-center">14496bkcZrrF2BxmsRCmwBJYiqf16bSawKqoEo8od98s26EXZon</p>
+                            </div>
+                            <div class="flex justify-center mt-4"><button value="1"
+                                    class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:bg-blue-900 focus:shadow-outline-gray transition ease-in-out duration-150 mb-10 float-right"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" class="h-6 w-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3">
+                                        </path>
+                                    </svg>
+                                    copy wallet address
+                                </button></div>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 bg-gray-100 text-right"><button type="button"
+                            class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="v-portal" style="display: none;"></div>
+        <footer class="bg-white">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+                <div class="flex justify-center space-x-6 md:order-2"><a href="mailto:daniel@hotspotty.net"
+                        class="text-gray-400 hover:text-gray-500"><span class="sr-only">Email</span> <svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76">
+                            </path>
+                        </svg></a> <a href="https://discord.com/channels/404106811252408320/783868820641021952"
+                        target="_blank" class="text-gray-400 hover:text-gray-500"><span class="sr-only">Discord</span>
+                        <svg fill="currentColor" width="24" height="24" viewBox="0 0 1000 1000"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M 386 203C 387 203 388 203 388 203C 388 203 395 212 395 212C 267 248 209 304 209 304C 209 304 224 296 250 284C 326 250 386 241 411 239C 415 238 419 238 423 238C 466 232 515 231 566 236C 633 244 705 264 779 304C 779 304 723 251 603 214C 603 214 612 203 612 203C 612 203 709 201 811 277C 811 277 913 462 913 689C 913 689 853 792 697 797C 697 797 671 767 650 740C 743 714 778 656 778 656C 749 675 721 688 697 697C 661 712 627 722 594 728C 526 740 464 737 411 727C 371 719 336 708 307 697C 291 690 273 682 255 673C 253 671 251 670 249 669C 248 668 247 668 246 667C 233 660 226 655 226 655C 226 655 260 711 350 738C 329 765 303 797 303 797C 146 792 87 689 87 689C 87 462 189 277 189 277C 284 206 375 203 386 203C 386 203 386 203 386 203M 368 467C 327 467 296 502 296 545C 296 588 328 624 368 624C 408 624 440 588 440 545C 441 502 408 467 368 467C 368 467 368 467 368 467M 626 467C 586 467 554 502 554 545C 554 588 586 624 626 624C 666 624 698 588 698 545C 698 502 666 467 626 467C 626 467 626 467 626 467">
+                            </path>
+                        </svg></a> <a href="https://twitter.com/hotspotty" target="_blank"
+                        class="text-gray-400 hover:text-gray-500"><span class="sr-only">Twitter</span> <svg
+                            fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                            </path>
+                        </svg></a></div>
+                <div class="mt-8 md:mt-0 md:order-1">
+                    <p class="text-center text-base text-gray-400">
+                        © 2020 hotspotty.net
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21RSP2T54D"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+
+    <script src="../js/main.js"></script>
+
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-21RSP2T54D');
+    </script>
+
+</body>
+
+</html>

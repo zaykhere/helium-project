@@ -1,5 +1,4 @@
 const express= require("express");
-const bodyParser= require("body-parser");
 const mongoose= require("mongoose");
 const dotenv = require("dotenv");
 const path = require("path");
@@ -13,8 +12,7 @@ dotenv.config({path:'./config.env'});
 
 app.set("view engine", "ejs"); 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
 app.use(
   cors({
     origin: [
@@ -27,16 +25,20 @@ app.use(
 app.use(cookieParser());
 
 app.use("/public", express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Import Routes
 const userRoutes = require("./routes/userRoutes");
 const templateRoutes = require("./routes/templateRoutes");
+const heliumRoutes = require("./routes/heliumRoutes");
 
 //Middlewares
 
 // Use Routes
 app.use("/users", userRoutes);
 app.use("/", templateRoutes);
+app.use("/", heliumRoutes);
 
 //DB
 const connectDB = process.env.CONNECTION_STRING;

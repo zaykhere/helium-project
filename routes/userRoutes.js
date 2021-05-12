@@ -66,7 +66,7 @@ router.post("/login", asyncHandler(async(req,res)=>{
         httpOnly: true,
       };
       res.cookie("token", token, options);
-      res.send("Dashboard page");
+      res.redirect("/dashboard");
     }
     else {
       let errorMsg = "Invalid email or password";

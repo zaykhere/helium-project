@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
+
+      body {
+        font-family: "Nunito", sans-serif !important;
+        background-color: #e7e8e9;
+      }
+
+      .bg-light {
+        background-color: #fff !important;
+      }
+
+      .navbar-brand {
+          margin-left: 5% !important;
+      }
+
+      .menu-items {
+          margin-left: 5% !important;
+      }
+
+      .nav-item {
+          margin-right: 10px;
+      }
+
+      .nav-link {
+          font-size: 15px !important;
+          color: rgb(107,114,128) !important;
+          font-weight: 600;
+          font-family: "Nunito", sans-serif !important;
+      }
+
+      .nav-link:hover {
+          border-bottom: 2px solid rgb(129,140,248) !important;
+      }
+
+      .profile-image {
+          margin-right: 5% !important;
+      }
+
+      .btn-danger {
+          background-color: rgb(37,99,235) !important;
+          color: white !important;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="http://localhost:5000/dashboard">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Eo_circle_blue_letter-h.svg/512px-Eo_circle_blue_letter-h.svg.png" width="36" height="36"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto menu-items">
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:5000">Dashboard </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hotspots</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:5000/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:5000/users/logout"
+              >Logout</a
+            >
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                
+                    <img src="https://ui-avatars.com/api/?name=Nabeel+khanjee&color=7F9CF5&background=EBF4FF" width="36" height="36" class="rounded profile-image">
+                
+            </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container profile-area my-3 py-3">
+        <h3> Add Your Wallet </h3>
+        <form method="POST" action="http://localhost:5000/add_wallet">
+            <div class="form-group">
+              <label for="wallet">Wallet</label>
+              <input type="text" class="form-control" id="walletText" name="wallet" placeholder="Enter your HNT Wallet">
+            </div>
+            <button type="submit" class="btn btn-primary"> Add</button>
+            </form>
+
+            <div class="your-wallets my-4 py-4">
+            <h3> Your Wallets </h3>
+            <% for(let i=0; i<wallets.length; i++) { %>
+                <div class="alert alert-dark" role="alert">  
+                   <%= wallets[i].wallet %> 
+                 </div> 
+                <% } %>   
+            </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
