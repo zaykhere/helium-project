@@ -8,6 +8,12 @@ const axios = require("axios");
 
 // Add Wallet Address
 router.post("/add_wallet", protect, asyncHandler(async(req,res)=>{
+    try {
+        const checkWallet = await axios.get(`https://api.helium.io/v1/accounts/${req.body.wallet}`);
+        if(checkWallet.error) return res.send("error");
+    } catch (error) {
+        return res.send("error");
+    }
 
     const findWallet = await Wallet.findOne({user:req.user._id});
     console.log(findWallet);
@@ -52,13 +58,22 @@ router.get("/30rewards/:walletid", asyncHandler(async(req,res)=>{
 router.post("/add_hotspot", protect ,asyncHandler(async(req,res)=>{
     //console.log(req.body.hotspot);
 
-    const hotspot = new Hotspot({
-        user: req.user._id,
-        hotspot: req.body.hotspot
-    });
-    const saveHotspot = await hotspot.save();
-    if(!saveHotspot) return res.json({errorMsg: "Error, something went wrong"});
-    res.redirect("/hotspot");
+    try {
+        let hhotspot = await axios.get(`https://api.helium.io/v1/hotspots/${req.body.hotspot}`);
+        if(hhotspot.error) return res.send("error");
+
+        const hotspot = new Hotspot({
+            user: req.user._id,
+            hotspot: req.body.hotspot
+        });
+        const saveHotspot = await hotspot.save();
+        if(!saveHotspot) return res.json({errorMsg: "Error, something went wrong"});
+        res.redirect("/hotspot");
+    } catch (error) {
+        return res.send("error");
+    }
+
+    
 }));
 
 // Get All Hotspots
@@ -68,14 +83,38 @@ router.get("/hotspots", protect, asyncHandler(async(req,res)=>{
     res.send(hotspots);
 }));
 
+router.get("/hotspot/:address", protect, asyncHandler(async(req,res)=>{
+    const wallet = await Wallet.findOne({user: req.user._id});
+    const hotspot = await Hotspot.findOne({hotspot:req.params.address});
+    if(!wallet && !hotspot) return res.render("dashboard-plain");
+    if(wallet && !hotspot) return res.render("dashboard-wallet",{wallet: wallet.wallet});
+                  
+    res.render("dashboard",{wallet: wallet.wallet, hotspot: hotspot.hotspot});  
+}))
+
 // Get First Hotspot 
-router.get("/hotspot", protect, asyncHandler(async(req,res)=>{
+router.get("/hhotspot", protect, asyncHandler(async(req,res)=>{
     const hotspot = await Hotspot.findOne({user: req.user._id});
     if(!hotspot) return res.send("No hotspot found");
     res.send(hotspot);
 }));
 
+//Wallet Delete
+router.delete("/wallet/:id", asyncHandler(async(req,res)=>{
+    await Wallet.findByIdAndRemove(req.params.id)
+        .then(()=> res.redirect("/profile"))
+        .catch((err)=> console.log(err) );
+}));
 
+router.delete("/hotspot/:id", asyncHandler(async(req,res)=>{
+    await Hotspot.findByIdAndRemove(req.params.id)
+        
+    const hotspots = await Hotspot.find({user: req.user._id});
+    if(!hotspots) return res.render("hotspot");
+    res.render("hotspot",{hotspots: hotspots});
+        
+      
+}));
 
 
 module.exports = router;

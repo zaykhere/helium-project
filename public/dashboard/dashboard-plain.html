@@ -15,7 +15,7 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Scripts -->
     <script type="text/javascript">
@@ -1262,8 +1262,23 @@
                                                 </div><canvas id="bar-chart" width="440" height="275" class="chartjs-render-monitor" style="display: block; height: 250px; width: 400px;"></canvas>
                                             </div>
                                             <div class="md:flex">
-
-                                                <div class="w-full md:w-1/2">
+                                                <div class="w-full md:w-1/4">
+                                                    <div class="flex flex-row bg-white py-4">
+                                                        <div class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
+                                                            <div class="text-sm  text-center">Today</div>
+                                                            <div class="font-bold text-lg text-center"> <span class="text-sm">HNT</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full md:w-1/4">
+                                                    <div class="flex flex-row bg-white py-4">
+                                                        <div class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
+                                                            <div class="text-sm  text-center">Yesterday</div>
+                                                            <div class="font-bold text-lg text-center"> <span class="text-sm">HNT</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full md:w-1/4">
                                                     <div class="flex flex-row bg-white py-4">
                                                         <div class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
                                                             <div class="text-sm  text-center">7 Day Average</div>
@@ -1271,7 +1286,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="w-full md:w-1/2">
+                                                <div class="w-full md:w-1/4">
                                                     <div class="flex flex-row bg-white py-4">
                                                         <div class="flex flex-col text-white flex-grow bg-blue-600 py-2 mx-2 rounded-lg shadow-xl">
                                                             <div class="text-sm  text-center">30 Day Average</div>
@@ -1389,7 +1404,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
 
-    <script src="../public/js/main.js"></script>
+    <script src="../js/main.js"></script>
 
 
     <script>

@@ -4,11 +4,13 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 const ValidateRegisterInput = require("../validation/register");
 const ValidateLoginInput = require("../validation/login");
+const {protect} = require("../middlewares/auth");
 
 // User Sign Up
 router.post("/register", asyncHandler(async(req,res)=>{
      //Validation 
   const { errors, isValid } = ValidateRegisterInput(req.body);
+  //console.log(error);
   if (!isValid) {
     let errorMsg = Object.keys(errors);
     return res.render("registration", {errorMsg});
@@ -36,7 +38,7 @@ router.post("/register", asyncHandler(async(req,res)=>{
       ),
     };
     res.cookie("token", token, options);
-    res.send("Dashboard Page");
+    res.redirect("/dashboard");
 } catch (ex) {
   let errorMsg = ex.message;
     return res.render("registration", {errorMsg});
@@ -80,10 +82,24 @@ router.post("/login", asyncHandler(async(req,res)=>{
   }
 }))
 
+
 router.get("/logout", asyncHandler(async(req,res)=>{
   if(req.cookies.token)
     res.clearCookie("token");
     res.redirect("/");
+}))
+
+//Delete Account 
+router.delete("/deleteaccount", protect, asyncHandler(async(req,res)=>{
+  await User.findByIdAndRemove(req.params.id)
+    .then(()=> {
+      if(req.cookies.token) {
+        res.clearCookie("token");
+        return res.redirect("/");
+      }
+      return res.redirect("/");
+    })
+    .catch((err)=> console.log(err));
 }))
 
 module.exports = router;

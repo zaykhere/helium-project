@@ -11,14 +11,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://hotspotty.net/css/app.css">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet">
+
 
     <link rel="stylesheet" href="../public/css/style.css">
-
-    <link rel="stylesheet" href="/css/app.css">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script type="text/javascript">
@@ -995,36 +992,74 @@
             }]).default
         });
     </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer=""></script>
+
     <script src="/js/app.js" defer=""></script>
     <style type="text/css">
-        .rotate[data-v-6a69aec8] {
-            -webkit-animation: rotation-data-v-6a69aec8 2s linear infinite;
-            animation: rotation-data-v-6a69aec8 2s linear infinite
-        }
+        /* Chart.js */
+        /*
+* DOM element rendering detection
+* https://davidwalsh.name/detect-node-insertion
+*/
         
-        @-webkit-keyframes rotation-data-v-6a69aec8 {
-            0% {
-                transform: rotate(359deg)
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99;
             }
             to {
-                transform: rotate(0deg)
+                opacity: 1;
             }
         }
         
-        @keyframes rotation-data-v-6a69aec8 {
-            0% {
-                transform: rotate(359deg)
-            }
-            to {
-                transform: rotate(0deg)
-            }
+        .chartjs-render-monitor {
+            animation: chartjs-render-animation 0.001s;
+        }
+        /*
+* DOM element resizing detection
+* https://github.com/marcj/css-element-queries
+*/
+        
+        .chartjs-size-monitor,
+        .chartjs-size-monitor-expand,
+        .chartjs-size-monitor-shrink {
+            position: absolute;
+            direction: ltr;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1;
+        }
+        
+        .chartjs-size-monitor-expand>div {
+            position: absolute;
+            width: 1000000px;
+            height: 1000000px;
+            left: 0;
+            top: 0;
+        }
+        
+        .chartjs-size-monitor-shrink>div {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            left: 0;
+            top: 0;
         }
     </style>
 </head>
 
 <body class="font-sans antialiased">
+
+
+
+
     <div class="min-h-screen bg-gray-100">
 
         <div id="myNav" class="overlay" style="    background-color: rgb(255, 255, 255);
@@ -1034,36 +1069,46 @@
                 <a href="/">Dashboard</a>
                 <a href="/hotspot">Hotspot</a>
                 <a href="/profile">Profile</a>
-                <a href="/users/logout">Logout</a>
+                <a href="/users/register">Logout</a>
             </div>
         </div>
+
 
         <nav class="bg-white border-b border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <div class="flex-shrink-0 flex items-center">
-                            <a href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Eo_circle_blue_letter-t.svg/512px-Eo_circle_blue_letter-t.svg.png" alt="Hotspotty" class="block h-9 w-auto"></a>
+                            <a href="http://localhost:5000">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Eo_circle_blue_letter-t.svg/512px-Eo_circle_blue_letter-t.svg.png" alt="Hotspotty" class="block h-9 w-auto">
+                            </a>
                         </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"><a href="/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <a href="/" class="inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
                                 Dashboard
-                            </a> <a href="/hotspot" class="inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                            </a>
+                            <a href="/hotspot" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                 Hotspots
                             </a>
                             <a href="/profile" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                 Profile
-                            </a><a href="/users/logout" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            Logout
-                        </a>
+                            </a>
+                            <a href="/users/logout" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Logout
+                            </a>
                             <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                 <div class="hidden sm:flex">
                                     <div class="relative">
-                                        <div></div>
-                                        <div class="fixed inset-0 z-40" style="display: none;"></div>
+                                        <div>
+                                        </div>
+                                        <div class="fixed inset-0 z-40" style="display: none;">
+                                        </div>
                                         <div class="absolute z-50 mt-2 rounded-md shadow-lg w-48 origin-top-left left-0" style="display: none;">
                                             <div class="rounded-md shadow-xs py-1 bg-white">
                                                 <div>
-                                                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"></a>
+                                                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1072,48 +1117,60 @@
                             </a>
                         </div>
                     </div>
-                    <div class="hidden sm:flex sm:items-center sm:ml-6">
-                        <div class="ml-3 relative"></div>
-                    </div>
+
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         <div class="ml-3 relative">
                             <div class="relative">
-                                <div><button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"><img
-                                            src="https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png"
-                                            alt="Nabeel khanjee" class="h-8 w-8 rounded-full object-cover"></button>
+                                <div>
+                                    <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                        <img src="https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png"
+                                            alt="Nabeel khanjee" class="h-8 w-8 rounded-full object-cover">
+                                    </button>
                                 </div>
-                                <div class="fixed inset-0 z-40" style="display: none;"></div>
+
                                 <div class="absolute z-50 mt-2 rounded-md shadow-lg w-48 origin-top-right right-0" style="display: none;">
                                     <div class="rounded-md shadow-xs py-1 bg-white">
                                         <div class="block px-4 py-2 text-xs text-gray-400">
                                             Manage Account
                                         </div>
-                                        <div><a href="/profile" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                        <div>
+                                            <a href="/profile" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
                                                 Profile
-                                            </a></div>
+                                            </a>
+                                        </div>
                                         <!---->
-                                        <div class="border-t border-gray-100"></div>
+                                        <div class="border-t border-gray-100">
+
+                                        </div>
                                         <!---->
                                         <form>
-                                            <div><button type="submit" class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                                    Logout
-                                                </button></div>
+                                            <div>
+                                                <a href="/users/register" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                                Logout
+                                            </a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
-                    <div class="-mr-2 flex items-center sm:hidden"><button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+
+                    <div class="-mr-2 flex items-center sm:hidden">
+
+                        <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
 
                             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-
-                            <!-- <svg
-                                stroke="currentColor" fill="none" viewBox="0 0 24 24" class="h-6 w-6">
+                            <!-- 
+                            <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h16M4 18h16" class="inline-flex"></path>
+                                    d="M4 6h16M4 12h16M4 18h16" class="inline-flex">
+                                </path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" class="hidden"></path>
+                                    d="M6 18L18 6M6 6l12 12" class="hidden">
+                                </path>
                             </svg> -->
                         </button>
                     </div>
@@ -1121,24 +1178,28 @@
             </div>
             <div class="sm:hidden hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <div><a href="/" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
-                            Dashboard
-                        </a></div>
-                    <div><a href="/hotspot" class="block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">
-                            Hotspots
-                        </a></div>
-                    <div></div>
-                </div>
-                <div></div>
-                <div>
                     <div>
-                        <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"></a>
+                        <a href="/" class="block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">
+                            Dashboard
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/hotspot" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                            Hotspots
+                        </a>
                     </div>
                 </div>
-                <div class="flex mb-4 mt-4 justify-center"></div>
+                <div>
+                    <div>
+                        <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                        </a>
+                    </div>
+                </div>
                 <div class="pt-4 pb-1 border-t border-gray-200">
                     <div class="flex items-center px-4">
-                        <div class="flex-shrink-0"><img src="https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png" alt="Nabeel khanjee" class="h-10 w-10 rounded-full"></div>
+                        <div class="flex-shrink-0">
+                            <img src="https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png" alt="Nabeel khanjee" class="h-10 w-10 rounded-full">
+                        </div>
                         <div class="ml-3">
                             <div class="font-medium text-base text-gray-800">Nabeel khanjee</div>
                             <div class="font-medium text-sm text-gray-500">nabeelshakeel966@gmail.com</div>
@@ -1150,9 +1211,11 @@
                             </a></div>
                         <!---->
                         <form method="POST">
-                            <div><button class="w-full text-left block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
-                                    Logout
-                                </button></div>
+                            <div>
+                                <a href="/users/register" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Logout
+                            </a>
+                            </div>
                         </form>
                         <!---->
                     </div>
@@ -1162,7 +1225,7 @@
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Hotspots
+                    Dashboard
                 </h2>
             </div>
         </header>
@@ -1171,89 +1234,77 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div>
-                            <div class="px-6 py-8 bg-white border-gray-200">
-                                <div class="flex mb-4">
-                                    <div class="w-1/2 h-12">
-                                        <div class="text-2xl">Hotspots</div>
-                                    </div>
-                                    <div class="w-1/2 h-12"><button id="myBtn" type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900
-                                        focus:outline-none focus:bg-blue-900 focus:shadow-outline-gray transition ease-in-out duration-150 mb-10 float-right"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                            class="w-6 h-6 mr-2 text-gray-100">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                </path>
-                                            </svg> Add new hotspot
-                                        </button>
-                                    </div>
+                            <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+                                <div class="mt-8 text-2xl">
+                                    Welcome to your Helium Hotspots Manager!
                                 </div>
-                                <div data-v-6a69aec8="">
-                                    <div data-v-6a69aec8="" class="flex flex-col">
-                                        <div data-v-6a69aec8="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                            <div data-v-6a69aec8="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                <div data-v-6a69aec8="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                    <table data-v-6a69aec8="" class="min-w-full divide-y divide-gray-200">
-                                                        <thead data-v-6a69aec8="">
-                                                            <tr data-v-6a69aec8="">
-                                                                <th data-v-6a69aec8="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                    Name
-                                                                </th>
-                                                                <th data-v-6a69aec8="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                    Community
-                                                                </th>
-                                                                <th data-v-6a69aec8="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                    Location
-                                                                </th>
-                                                                <th data-v-6a69aec8="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                    Status
-                                                                </th>
-                                                                <th data-v-6a69aec8="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                    Score
-                                                                </th>
-                                                                <th data-v-6a69aec8="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                    Rewards
-                                                                </th>
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody data-v-6a69aec8="" class="bg-white divide-y divide-gray-200">
-                                                            <% hotspots.forEach((hotspot, index)=>{ %>
-                                                                <tr data-v-6a69aec8="" class="hover:bg-gray-50">
-                                                                    <td data-v-6a69aec8="" class="whitespace-no-wrap"><a href=/hotspotpage/<%=hotspot.data.address %> ><%= hotspot.data.name %></a></td>
-                                                                    <td data-v-6a69aec8="" class="px-6 py-4 whitespace-no-wrap"></td>
-                                                                    <td data-v-6a69aec8="" class="px-6 py-4 whitespace-no-wrap">
-                                                                        <%= hotspot.data.geocode.short_country %> >
-                                                                            <%= hotspot.data.geocode.long_state %>
-                                                                    </td>
-                                                                    <td data-v-6a69aec8="" class="px-6 py-4 whitespace-no-wrap text-gray-500">
-                                                                        <%= hotspot.data.status.online %>
-                                                                    </td>
-                                                                    <td data-v-6a69aec8="" class="px-6 py-4 whitespace-no-wrap text-gray-500">
-                                                                        <div data-v-6a69aec8="" class="text-sm font-bold text-gray-900">
-                                                                            <%= hotspot.data.score %>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td data-v-6a69aec8="" class="px-6 py-4 whitespace-no-wrap text-gray-500">
-                                                                        <% console.log(rewards) %>
-                                                                            <%= rewards[index] %>
-                                                                    </td>
-
-                                                                </tr>
-                                                                <% }) %>
-                                                        </tbody>
-                                                    </table>
+                            </div>
+                            <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
+                                <div class="p-6">
+                                    <div class="flex items-center"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                            </path>
+                                        </svg>
+                                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="#">30
+                                                Day Rewards</a></div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500 bg-white rounded-lg shadow-xl pl-4 pr-4 pt-2 pb-2">
+                                        <div class="mt-2 text-sm text-gray-500">
+                                            <div class="" style="height: 250px;">
+                                                <div class="chartjs-size-monitor">
+                                                    <div class="chartjs-size-monitor-expand">
+                                                        <div class=""></div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink">
+                                                        <div class=""></div>
+                                                    </div>
+                                                </div><canvas id="bar-chart" width="440" height="275" class="chartjs-render-monitor" style="display: block; height: 250px; width: 400px;"></canvas>
+                                            </div>
+                                            <div class="md:flex">
+                                                
+                                                
+                                               
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center mt-10">
+                                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"></div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500">
+                                        <div class="flex items-center justify-center">
+                                            <div class="w-full max-w-3xl">
+                                                <div class="md:flex">
+                                                    <div class="w-full md:w-1/4">
+                                                        <div class="border-r border-transparent md:border-gray-50 shadow-sm mb-4">
+                                                            <div class="rounded-l-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="v-portal" style="display: none;"></div>
-                            <div class="flex m-4">
-                                <div class="w-1/2 m;-3">
-                                    <p class="text-xs text-gray-400 float-left">hotspot rewards are updated hourly</p>
+                                <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
+                                    <div class="flex items-center"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="#">Wallet Rewards</a></div>
+                                    </div>
+                                    <div class="mt-2 text-sm text-gray-500 bg-white rounded-lg shadow-xl">
+                                        <div>
+                                            <div class="p-4">
+                                                You are currently not following any wallets. Go to
+                                                <b><a href="/profile"
+                                                        class="hover:text-blue-800">Profile</a></b> to add new wallet addresses.
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1261,54 +1312,6 @@
             </div>
         </main>
         <div class="vue-portal-target">
-            <div id="myModal" class="fixed top-0 inset-x-0 px-4 pt-6 sm:px-0 sm:flex sm:items-top sm:justify-center" style=" display: none;  margin-left: auto;margin-right: auto;">
-                <div id="myModal" class="modal fixed inset-0 transform transition-all" style="">
-                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                </div>
-                <div id="myModal" class="modal bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:max-w-2xl" style="">
-                    <div class="px-6 py-4">
-                        <div class="text-lg">
-                            Add new hotspot
-                        </div>
-                        <div class="mt-4">
-                            <p>Here you can add a hotspot to be tracked and managed.</p>
-                            <p>You are currently using
-                                <b>0/30</b> allowed hotspots.
-                            </p>
-                            <div>
-                                <div class="mt-4">
-                                    <form method="POST" action="http://secure-garden-20021.herokuapp.com/add_hotspot"><input class="form-input rounded-md shadow-sm mt-1 block w-full" name="hotspot" type="text" placeholder="Hotspot Hash Address">
-
-                                        <div class="mt-2">
-                                            <p class="text-center font-bold"></p>
-                                            <p class="text-blue-500 text-center font-bold"></p>
-                                            <div class="text-center font-bold">
-                                                <!---->
-                                            </div>
-                                        </div>
-                                        <div class="flex mt-6"><label class="flex items-center"><span
-                                                class="ml-2 text-gray-300 text-sm">
-                                                
-                                            </span></label></div>
-                                        <div class="mt-2" style="display: none;">
-                                            <p class="text-sm text-blue-600">
-
-                                            </p>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4 bg-gray-100 text-right">
-                        <div><button type="button" class="close inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">Close</button>
-                            <button type="submit" class=" inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:bg-blue-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2">
-                                Add hotspot
-                            </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="fixed top-0 inset-x-0 px-4 pt-6 sm:px-0 sm:flex sm:items-top sm:justify-center" style="display: none;">
                 <div class="fixed inset-0 transform transition-all" style="display: none;">
                     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -1370,6 +1373,12 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21RSP2T54D"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+
+    <script src="../public/js/main.js"></script>
+
+
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -1380,40 +1389,7 @@
 
         gtag('config', 'G-21RSP2T54D');
     </script>
-    <script src="../public/js/main.js"></script>
-    <script>
-        // console.log(rewardDiv.length());
-
-
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 
 </body>
-
-</html>
 
 </html>
