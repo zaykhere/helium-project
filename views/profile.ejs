@@ -196,7 +196,7 @@
 
         <div class="container profile-area my-3 py-3">
             <h3> Add Your Wallet </h3>
-            <form method="POST" action="http://secure-garden-20021.herokuapp.com/add_wallet">
+            <form method="POST" action="http://trackmyhnt.com/add_wallet">
                 <div class="form-group">
                     <label for="wallet">Wallet</label>
                     <input type="text" class="form-control" id="walletText" name="wallet" placeholder="Enter your HNT Wallet">
@@ -222,12 +222,12 @@
         <script>
             let delBtn = document.querySelector(".del-acc");
             delBtn.addEventListener("click", function(e){
-                fetch(`http://secure-garden-20021.herokuapp.com/users/deleteaccount`, {
+                fetch(`http://trackmyhnt.com/users/deleteaccount`, {
                     method: 'DELETE',
                 })
                 .then(res => res.text()) // or res.json()
-                .then(res => window.location.href="http://secure-garden-20021.herokuapp.com/users/logout")
-				.catch(err=> window.location.href="http://secure-garden-20021.herokuapp.com/users/logout");
+                .then(res => window.location.href="http://trackmyhnt.com/users/logout")
+				.catch(err=> window.location.href="http://trackmyhnt.com/users/logout");
                     
             })
         </script>

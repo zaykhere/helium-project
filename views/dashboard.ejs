@@ -1568,13 +1568,13 @@
     </script>
     <script>
         const hotspotList = document.querySelector(".hotspot-list");
-        fetch("http://secure-garden-20021.herokuapp.com/hotspots")
+        fetch("http://trackmyhnt.com/hotspots")
             .then((res) => res.json())
             .then((data) => {
                 for (i = 0; i < data.length; i++) {
                     let elem = document.createElement("a");
                     elem.textContent = data[i].hotspot;
-                    elem.href = `http://secure-garden-20021.herokuapp.com/hotspot/${data[i].hotspot}`;
+                    elem.href = `http://trackmyhnt.com//hotspot/${data[i].hotspot}`;
                     hotspotList.appendChild(elem);
                 }
             })
