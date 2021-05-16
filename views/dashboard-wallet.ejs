@@ -1499,11 +1499,19 @@
         let walletText = document.querySelector(".wallet-text");
         let walletSum = document.querySelector(".wallet-sum");
         let heliumExplorer = document.querySelector(".helium-explorer");
+        var balance = 0;
+        fetch(`https://api.helium.io/v1/accounts/${wallet}`)
+            .then((res)=> res.json())
+            .then((data2)=> balance = data2.data.balance)
+            .catch((err)=> console.log(err));
         fetch(`/30rewards/${wallet}`)
             .then((resp) => resp.json())
             .then((data) => {
+                let proper = balance.toString();
+                let output = proper.substring(0,2) + "." + proper.substring(2);
+                let value = parseFloat(output).toFixed(2);
+                walletSum.textContent = "$ " + value + "HNT";
                 walletText.textContent = wallet;
-                walletSum.textContent = "$ " + data.data.sum;
                 let min = data.meta.min_time;
                 let minTime = min.split('T')[0];
                 let max = data.meta.max_time;

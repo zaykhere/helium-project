@@ -1514,20 +1514,25 @@
         let walletText = document.querySelector(".wallet-text");
         let walletSum = document.querySelector(".wallet-sum");
         let heliumExplorer = document.querySelector(".helium-explorer");
+        var balance = 0;
+        fetch(`https://api.helium.io/v1/accounts/${wallet}`)
+            .then((res)=> res.json())
+            .then((data2)=> balance = data2.data.balance)
+            .catch((err)=> console.log(err));
         fetch(`https://api.helium.io/v1/accounts/${wallet}/rewards/sum?min_time=-7%20day&bucket=day`)
             .then((resp) => resp.json())
             .then((data) => {
                 let walletTotalArr = [];
                 let walletDateArr = [];
-                let total = 0;
                 data.data.forEach((d) => {
                     walletTotalArr.push(d.total);
                     walletDateArr.push(d.timestamp.split('T')[0]);
-                    total = total + d.total;
                 });
-                totalAvg = (total/walletTotalArr.length);
                 walletText.textContent = wallet;
-                walletSum.textContent = "$ " + totalAvg.toFixed(2) + "HNT";
+                let proper = balance.toString();
+                let output = proper.substring(0,2) + "." + proper.substring(2);
+                let value = parseFloat(output).toFixed(2);
+                walletSum.textContent = "$ " + value + "HNT";
                 heliumExplorer.href = `https://explorer.helium.com/accounts/${wallet}`;
 
                 var barChart = new Chart(ctx1, {
