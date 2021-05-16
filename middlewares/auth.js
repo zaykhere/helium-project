@@ -10,8 +10,7 @@ const asyncHandler = require("express-async-handler");
   }
 
   if (!token) {
-    return res.status(401).json({ error: "You are not allowed to access this page" });
-
+    return res.render("index");
   }
 
    try{

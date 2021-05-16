@@ -226,7 +226,8 @@
                     method: 'DELETE',
                 })
                 .then(res => res.text()) // or res.json()
-                .then(res => window.location.reload())
+                .then(res => window.location.href="http://secure-garden-20021.herokuapp.com/users/logout")
+				.catch(err=> window.location.href="http://secure-garden-20021.herokuapp.com/users/logout");
                     
             })
         </script>

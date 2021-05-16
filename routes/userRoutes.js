@@ -91,15 +91,8 @@ router.get("/logout", asyncHandler(async(req,res)=>{
 
 //Delete Account 
 router.delete("/deleteaccount", protect, asyncHandler(async(req,res)=>{
-  await User.findByIdAndRemove(req.params.id)
-    .then(()=> {
-      if(req.cookies.token) {
-        res.clearCookie("token");
-        return res.redirect("/");
-      }
-      return res.redirect("/");
-    })
-    .catch((err)=> console.log(err));
+  await User.findByIdAndRemove(req.user._id);
+  res.redirect("/");
 }))
 
 module.exports = router;

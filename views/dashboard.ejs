@@ -1514,21 +1514,26 @@
         let walletText = document.querySelector(".wallet-text");
         let walletSum = document.querySelector(".wallet-sum");
         let heliumExplorer = document.querySelector(".helium-explorer");
-        fetch(`/30rewards/${wallet}`)
+        fetch(`https://api.helium.io/v1/accounts/${wallet}/rewards/sum?min_time=-7%20day&bucket=day`)
             .then((resp) => resp.json())
             .then((data) => {
+                let walletTotalArr = [];
+                let walletDateArr = [];
+                let total = 0;
+                data.data.forEach((d) => {
+                    walletTotalArr.push(d.total);
+                    walletDateArr.push(d.timestamp.split('T')[0]);
+                    total = total + d.total;
+                });
+                totalAvg = (total/walletTotalArr.length);
                 walletText.textContent = wallet;
-                walletSum.textContent = "$ " + data.data.sum;
-                let min = data.meta.min_time;
-                let minTime = min.split('T')[0];
-                let max = data.meta.max_time;
-                let maxTime = max.split('T')[0];
+                walletSum.textContent = "$ " + totalAvg.toFixed(2) + "HNT";
                 heliumExplorer.href = `https://explorer.helium.com/accounts/${wallet}`;
 
                 var barChart = new Chart(ctx1, {
                     type: 'line',
                     data: {
-                        labels: [minTime, maxTime],
+                        labels: walletDateArr,
                         datasets: [{
                             fill: {
                                 target: 'origin',
@@ -1536,7 +1541,7 @@
                                 below: 'rgb(54, 162, 235, 0.2)' // And blue below the origin
                             },
                             label: 'Wallet Rewards',
-                            data: [data.data.total, data.data.total],
+                            data: walletTotalArr,
                             backgroundColor: [
                                 'rgba(54, 162, 235, 0.2)',
 
