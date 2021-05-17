@@ -1299,8 +1299,11 @@
                                                     
                                                     
                                                 </table>
+
+                                                
                                                 <div id="mydiv" data-lng=<%=hotspot.data.lng %>></div>
                                 <div id="mydiv2" data-lat=<%=hotspot.data.lat %>></div>
+                                
                                             </div>
                                         </div>
                                     </div>
@@ -1311,6 +1314,7 @@
 
 
                             <hr data-v-2265de1f="">
+                            <button class="del-hotspot inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-600 transition ease-in-out duration-150">Delete Hotspot</button>
                             <div data-v-2265de1f="" class="v-portal" style="display: none;"></div>
                             <div data-v-2265de1f="" class="v-portal" style="display: none;"></div>
                             <div data-v-2265de1f="" class="v-portal" style="display: none;"></div>
@@ -1319,6 +1323,7 @@
                     </div>
                 </div>
             </div>
+            
         </main>
 
         <footer class="bg-white">
@@ -1362,6 +1367,24 @@
 var marker = new mapboxg1.Marker()
     .setLngLat([lng,lat])
     .addTo(map);
+    </script>
+
+    <script>
+        let deleteBtn = document.querySelector(".del-hotspot");
+        let hotspotId = window.location.href;
+        let hotspotUrl = hotspotId.split("/")[4];
+
+        deleteBtn.addEventListener("click", function(){
+            fetch(`http://trackmyhnt.com/deletehotspot/${hotspotUrl}`, {
+                    method: 'DELETE',
+                })
+                .then(res => res.json()) // or res.json()
+                .then(res => window.location.href="http://trackmyhnt.com/hotspot")
+				.catch(err=> window.location.href="http://trackmyhnt.com/hotspot");
+                    
+            });
+        
+
     </script>
 
 </body>

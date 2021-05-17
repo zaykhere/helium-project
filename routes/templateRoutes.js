@@ -32,6 +32,7 @@ router.get("/dashboard", protect , asyncHandler(async(req,res)=> {
         console.log(hotspot);
     
         if(!wallet && !hotspot) return res.render("dashboard-plain");
+        if(hotspot && !wallet) return res.render("dashboard-plain");
         if(wallet && !hotspot) return res.render("dashboard-wallet",{wallet: wallet.wallet});
                   
         res.render("dashboard",{wallet: wallet.wallet, hotspot: hotspot.hotspot});  
@@ -61,8 +62,6 @@ router.get("/hotspot", protect, asyncHandler(async(req,res)=> {
             
             let hhotspot = await axios.get(`https://api.helium.io/v1/hotspots/${hotspot.hotspot}`);
             let reward = await axios.get(`https://api.helium.io/v1/hotspots/${hotspot.hotspot}/rewards/sum`);
-
-            console.log(hhotspot);
             
             hotspotData.push(hhotspot.data);
             rewards.push(reward.data.data.total);

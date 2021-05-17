@@ -1358,10 +1358,10 @@
                                         <div class="mt-2 text-sm text-gray-500 bg-white rounded-lg shadow-xl pl-4 pr-4  pb-24" style="padding-bottom: 150px;">
                                             <a href="https://explorer.helium.com/accounts/131dktL2q2qpBPKh3bf7ncAKWDjg7dq2ajvYgDrGJwiktVqfkua" class="helium-explorer" target="_blank" class="hover:text-blue-800">
                                                 <div class="grid grid-cols-2 gap-4">
-                                                    <div class="text-2xl font-bold wallet-sum">💸 395115.22 HNT</div>
+                                                    <div class="text-2xl font-bold wallet-sum"></div>
                                                     <div class="text-sm text-right pt-3"><span class="inline-block  align-text-bottom"> </span></div>
                                                 </div>
-                                                <p class="text-xs text-right wallet-text">131dktL2q2qpBPKh3bf7ncAKWDjg7dq2ajvYgDrGJwiktVqfkua</p>
+                                                <p class="text-xs text-right wallet-text"></p>
                                                 <div class="" style="height: 200px;">
                                                     <div class="chartjs-size-monitor">
                                                         <div class="chartjs-size-monitor-expand">
@@ -1517,9 +1517,9 @@
         var balance = 0;
         fetch(`https://api.helium.io/v1/accounts/${wallet}`)
             .then((res)=> res.json())
-            .then((data2)=> balance = data2.data.balance)
-            .catch((err)=> console.log(err));
-        fetch(`https://api.helium.io/v1/accounts/${wallet}/rewards/sum?min_time=-7%20day&bucket=day`)
+            .then((data2)=> {
+                balance = data2.data.balance;
+                return fetch(`https://api.helium.io/v1/accounts/${wallet}/rewards/sum?min_time=-7%20day&bucket=day`)
             .then((resp) => resp.json())
             .then((data) => {
                 let walletTotalArr = [];
@@ -1532,7 +1532,7 @@
                 let proper = balance.toString();
                 let output = proper.substring(0,2) + "." + proper.substring(2);
                 let value = parseFloat(output).toFixed(2);
-                walletSum.textContent = "$ " + value + "HNT";
+                walletSum.textContent = "$ " + value + " HNT";
                 heliumExplorer.href = `https://explorer.helium.com/accounts/${wallet}`;
 
                 var barChart = new Chart(ctx1, {
@@ -1569,7 +1569,10 @@
                     }
                 });
             })
-            .err((err) => console.log(err));
+                })
+            
+       
+            
     </script>
     <script>
         const hotspotList = document.querySelector(".hotspot-list");
@@ -1579,7 +1582,7 @@
                 for (i = 0; i < data.length; i++) {
                     let elem = document.createElement("a");
                     elem.textContent = data[i].hotspot;
-                    elem.href = `http://trackmyhnt.com//hotspot/${data[i].hotspot}`;
+                    elem.href = `http://trackmyhnt.com/hotspot/${data[i].hotspot}`;
                     hotspotList.appendChild(elem);
                 }
             })

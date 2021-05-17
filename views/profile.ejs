@@ -53,6 +53,10 @@
             background-color: rgb(37, 99, 235) !important;
             color: white !important;
         }
+        .del-wallet {
+            float: right;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -207,8 +211,9 @@
             <div class="your-wallets my-4 py-4">
                 <h3> Your Wallets </h3>
                 <% for(let i=0; i<wallets.length; i++) { %>
-                    <div class="alert alert-dark" role="alert">
+                    <div class="alert alert-dark wallet-area" role="alert">
                         <%= wallets[i].wallet %>
+                        <span class="del-wallet" style="color:red">X</span>
                     </div>
                     <% } %>
             </div>
@@ -222,13 +227,28 @@
         <script>
             let delBtn = document.querySelector(".del-acc");
             delBtn.addEventListener("click", function(e){
-                fetch(`http://trackmyhnt.com/users/deleteaccount`, {
+                fetch(`trackmyhnt.com/users/deleteaccount`, {
                     method: 'DELETE',
                 })
                 .then(res => res.text()) // or res.json()
-                .then(res => window.location.href="http://trackmyhnt.com/users/logout")
-				.catch(err=> window.location.href="http://trackmyhnt.com/users/logout");
+                .then(res => window.location.href="trackmyhnt.com/users/logout")
+				.catch(err=> window.location.href="trackmyhnt.com/users/logout");
                     
+            });
+
+            let delWallet = document.querySelector(".del-wallet");
+            let walletArea = document.querySelector(".wallet-area").children[0].previousSibling.textContent.trim();
+           
+            
+            delWallet.addEventListener("click", function(){
+                console.log(walletArea);
+
+                fetch(`trackmyhnt.com/deletewallet/${walletArea}`,{
+                    method: 'DELETE',
+                })
+                .then(res=> res.json())
+                .then(res=> window.location.href="trackmyhnt.com/profile")
+                .catch(err=> window.location.href="trackmyhnt.com/profile");
             })
         </script>
 </body>

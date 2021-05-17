@@ -1344,10 +1344,10 @@
                                         <div class="mt-2 text-sm text-gray-500 bg-white rounded-lg shadow-xl pl-4 pr-4  pb-24" style="padding-bottom: 150px;">
                                             <a href="https://explorer.helium.com/accounts/131dktL2q2qpBPKh3bf7ncAKWDjg7dq2ajvYgDrGJwiktVqfkua" class="helium-explorer" target="_blank" class="hover:text-blue-800">
                                                 <div class="grid grid-cols-2 gap-4">
-                                                    <div class="text-2xl font-bold wallet-sum">💸 395115.22 HNT</div>
+                                                    <div class="text-2xl font-bold wallet-sum"></div>
                                                     <div class="text-sm text-right pt-3"><span class="inline-block  align-text-bottom"> </span></div>
                                                 </div>
-                                                <p class="text-xs text-right wallet-text">131dktL2q2qpBPKh3bf7ncAKWDjg7dq2ajvYgDrGJwiktVqfkua</p>
+                                                <p class="text-xs text-right wallet-text"></p>
                                                 <div class="" style="height: 200px;">
                                                     <div class="chartjs-size-monitor">
                                                         <div class="chartjs-size-monitor-expand">
@@ -1502,9 +1502,9 @@
         var balance = 0;
         fetch(`https://api.helium.io/v1/accounts/${wallet}`)
             .then((res)=> res.json())
-            .then((data2)=> balance = data2.data.balance)
-            .catch((err)=> console.log(err));
-        fetch(`/30rewards/${wallet}`)
+            .then((data2)=> {
+                balance = data2.data.balance;
+                return  fetch(`/30rewards/${wallet}`)
             .then((resp) => resp.json())
             .then((data) => {
                 let proper = balance.toString();
@@ -1552,7 +1552,8 @@
                     }
                 });
             })
-            .err((err) => console.log(err));
+            })
+            
     </script>
 </body>
 

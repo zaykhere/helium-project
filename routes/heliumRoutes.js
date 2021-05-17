@@ -16,7 +16,6 @@ router.post("/add_wallet", protect, asyncHandler(async(req,res)=>{
     }
 
     const findWallet = await Wallet.findOne({user:req.user._id});
-    console.log(findWallet);
     if(findWallet) return res.json("You've already added a wallet");
    
     const walletData = new Wallet({
@@ -45,14 +44,6 @@ router.get("/wallet", protect, asyncHandler(async(req,res)=>{
     res.send(wallet);
 }));
 
-// Get Wallet Data from Helium API 
-router.get("/30rewards/:walletid", asyncHandler(async(req,res)=>{
-    const walletid = req.params.walletid;
-    const {data} = await axios.get(`https://api.helium.io/v1/accounts/${walletid}/rewards/sum?min_time=-1%20day`);
-   // console.log(data);
-    res.send(data);
-        
-}))
 
 // Add HotSpot
 router.post("/add_hotspot", protect ,asyncHandler(async(req,res)=>{
@@ -83,6 +74,21 @@ router.get("/hotspots", protect, asyncHandler(async(req,res)=>{
     res.send(hotspots);
 }));
 
+// Get First Hotspot 
+router.get("/hhotspot", protect, asyncHandler(async(req,res)=>{
+    const hotspot = await Hotspot.findOne({user: req.user._id});
+    if(!hotspot) return res.send("No hotspot found");
+    res.send(hotspot);
+}));
+
+router.get("/30rewards/:walletid", asyncHandler(async(req,res)=>{
+    const walletid = req.params.walletid;
+    const {data} = await axios.get(`https://api.helium.io/v1/accounts/${walletid}/rewards/sum?min_time=-1%20day`);
+   // console.log(data);
+    res.send(data);
+        
+}))
+
 router.get("/hotspot/:address", protect, asyncHandler(async(req,res)=>{
     const wallet = await Wallet.findOne({user: req.user._id});
     const hotspot = await Hotspot.findOne({hotspot:req.params.address});
@@ -92,27 +98,38 @@ router.get("/hotspot/:address", protect, asyncHandler(async(req,res)=>{
     res.render("dashboard",{wallet: wallet.wallet, hotspot: hotspot.hotspot});  
 }))
 
-// Get First Hotspot 
-router.get("/hhotspot", protect, asyncHandler(async(req,res)=>{
-    const hotspot = await Hotspot.findOne({user: req.user._id});
-    if(!hotspot) return res.send("No hotspot found");
-    res.send(hotspot);
-}));
-
 //Wallet Delete
-router.delete("/wallet/:id", asyncHandler(async(req,res)=>{
-    await Wallet.findByIdAndRemove(req.params.id)
-        .then(()=> res.redirect("/profile"))
-        .catch((err)=> console.log(err) );
+router.delete("/deletewallet/:idwallet", protect ,asyncHandler(async(req,res)=>{
+    const wallet = await Wallet.findOne({wallet: req.params.idwallet});
+    console.log(wallet);
+    if(wallet) {
+        try{
+        await wallet.remove();
+        res.send("removed");
+        }
+        catch(ex) {
+            console.log(ex);
+        }
+    }
+    else {
+        res.send("Sorry, could not be removed");
+    }
 }));
 
-router.delete("/hotspot/:id", asyncHandler(async(req,res)=>{
-    await Hotspot.findByIdAndRemove(req.params.id)
-        
-    const hotspots = await Hotspot.find({user: req.user._id});
-    if(!hotspots) return res.render("hotspot");
-    res.render("hotspot",{hotspots: hotspots});
-        
+router.delete("/deletehotspot/:hotspotid", protect ,asyncHandler(async(req,res)=>{
+    const hotspot = await Hotspot.findOne({hotspot: req.params.hotspotid});
+    if(hotspot) {
+        try{
+            await hotspot.remove();
+            res.send("Removed");
+        }
+        catch(ex) {
+            console.log(ex);
+        }
+    }
+    else {
+        res.send("Sorry, could not be removed");
+    }
       
 }));
 
