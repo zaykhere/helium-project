@@ -1507,14 +1507,13 @@
                 return  fetch(`/30rewards/${wallet}`)
             .then((resp) => resp.json())
             .then((data) => {
-                let balanceStr = balance.toString();
-
-                let balanceLen = balanceStr.length-6;
-                balanceStr = balanceStr.substr(0,balanceLen);
-
-                var x = balanceStr.substring(0, balanceStr.length -2) + "." + balanceStr.substring(balanceStr.length-2);
-                x = parseFloat(x).toFixed(2);
-                walletSum.textContent = "$ " + x + " HNT";
+                balance = balance / 100000000;
+                const currencyFormatter = new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+                bal = currencyFormatter.format(balance);
+                walletSum.textContent = "$ " + bal + " HNT";
                 walletText.textContent = wallet;
                 let min = data.meta.min_time;
                 let minTime = min.split('T')[0];

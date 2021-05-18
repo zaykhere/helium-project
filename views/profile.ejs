@@ -227,7 +227,7 @@
         <script>
             let delBtn = document.querySelector(".del-acc");
             delBtn.addEventListener("click", function(e){
-                fetch(`trackmyhnt.com/users/deleteaccount`, {
+                fetch(`http://trackmyhnt.com/users/deleteaccount`, {
                     method: 'DELETE',
                 })
                 .then(res => res.text()) // or res.json()
@@ -243,7 +243,7 @@
             delWallet.addEventListener("click", function(){
                 console.log(walletArea);
 
-                fetch(`trackmyhnt.com/deletewallet/${walletArea}`,{
+                fetch(`http://trackmyhnt.com/deletewallet/${walletArea}`,{
                     method: 'DELETE',
                 })
                 .then(res=> res.json())
