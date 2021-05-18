@@ -231,8 +231,8 @@
                     method: 'DELETE',
                 })
                 .then(res => res.text()) // or res.json()
-                .then(res => window.location.href="trackmyhnt.com/users/logout")
-				.catch(err=> window.location.href="trackmyhnt.com/users/logout");
+                .then(res => window.location.href="http://trackmyhnt.com/users/logout")
+				.catch(err=> window.location.href="http://trackmyhnt.com/users/logout");
                     
             });
 
@@ -247,8 +247,8 @@
                     method: 'DELETE',
                 })
                 .then(res=> res.json())
-                .then(res=> window.location.href="trackmyhnt.com/profile")
-                .catch(err=> window.location.href="trackmyhnt.com/profile");
+                .then(res=> window.location.href="http://trackmyhnt.com/profile")
+                .catch(err=> window.location.href="http://trackmyhnt.com/profile");
             })
         </script>
 </body>

@@ -1529,10 +1529,14 @@
                     walletDateArr.push(d.timestamp.split('T')[0]);
                 });
                 walletText.textContent = wallet;
-                let proper = balance.toString();
-                let output = proper.substring(0,2) + "." + proper.substring(2);
-                let value = parseFloat(output).toFixed(2);
-                walletSum.textContent = "$ " + value + " HNT";
+                let balanceStr = balance.toString();
+
+                let balanceLen = balanceStr.length-6;
+                balanceStr = balanceStr.substr(0,balanceLen);
+
+                var x = balanceStr.substring(0, balanceStr.length -2) + "." + balanceStr.substring(balanceStr.length-2);
+                x = parseFloat(x).toFixed(2);
+                walletSum.textContent = "$ " + x + " HNT";
                 heliumExplorer.href = `https://explorer.helium.com/accounts/${wallet}`;
 
                 var barChart = new Chart(ctx1, {
