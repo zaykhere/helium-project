@@ -5,6 +5,9 @@ const {protect} = require("../middlewares/auth");
 const Hotspot = require("../models/Hotspot");
 const Wallet = require("../models/Wallet");
 const axios = require("axios");
+const Host = require("../models/Host");
+const Partner = require("../models/Partner");
+const Referral = require("../models/Referral")
 
 
 router.get("/", asyncHandler(async(req,res)=>{
@@ -27,9 +30,7 @@ router.get("/dashboard", protect , asyncHandler(async(req,res)=> {
     try {
         const wallet = await Wallet.findOne({user: req.user._id});
         const hotspot = await Hotspot.findOne({user:req.user._id});
-    
-        console.log(wallet);
-        console.log(hotspot);
+ 
     
         if(!wallet && !hotspot) return res.render("dashboard-plain");
         if(hotspot && !wallet) return res.render("dashboard-plain");
@@ -76,6 +77,13 @@ router.get("/hotspot", protect, asyncHandler(async(req,res)=> {
 
     
 }));
+
+router.get("/hpr", protect, asyncHandler(async(req,res)=>{
+    const host = await Host.find();
+    const referral = await Referral.find();
+    const partner = await Partner.find();
+    res.render("hpr", {host: host, referral: referral, partner: partner});
+}))
 
 router.get("/hotspotpage/:address", protect ,asyncHandler(async(req,res)=>{
     const hotspots = await Hotspot.findOne({hotspot: req.params.address});

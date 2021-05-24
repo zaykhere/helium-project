@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="6T5xILkXOe96FuFJfdlm5rgNciL6LQhMhBUY0XlJ">
 
-    <title>Hotspotty - Helium Hotspot Manager</title>
+    <title>Track My HNT</title>
     <link rel="icon" href="/favicon.ico">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://hotspotty.net/css/app.css" />
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css" rel="stylesheet">
 
 
@@ -25,7 +29,7 @@
             max-height: 400px;
             margin: 30px auto !important;
         }
-        </style>
+    </style>
 
 
     <!-- Scripts -->
@@ -1097,6 +1101,9 @@
                 <a href="/hotspot">Hotspot</a>
                 <a href="/profile">Profile</a>
                 <a href="/users/logout">Logout</a>
+
+                <a href="/hpr">Host / Referral / Partner</a>
+
             </div>
         </div>
         <nav class="bg-white border-b border-gray-100">
@@ -1113,7 +1120,11 @@
                             </a>
                             <a href="/profile" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                 Profile
-                            </a><a href="/users/logout" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            </a>
+                            <a href="/hpr" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Host / Referral / Partner
+                            </a>
+                            <a href="/users/logout" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             Logout
                         </a>
                             <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
@@ -1158,7 +1169,8 @@
                                         <form>
                                             <div><button type="submit" class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
                                                     Logout
-                                                </button></div>
+                                                </button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -1221,7 +1233,7 @@
             </div>
         </nav>
 
-       
+
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -1231,7 +1243,6 @@
             </div>
         </header>
         <main>
-            <div id='map' class="container m-4" style='min-width: 350px; min-height: 300px;'></div>
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -1239,153 +1250,738 @@
                             <div data-v-2265de1f="" class="px-6 pt-8 pb-4 bg-white border-gray-200">
                                 <div data-v-2265de1f="" class="flex mb-4">
                                     <div data-v-2265de1f="" class="w-2/3 h-12">
-                                        <p data-v-2265de1f="" class="text-2xl"><%= hotspot.data.name %></p>
+                                        <p data-v-2265de1f="" class="text-2xl">
+                                            <%= hotspot.data.name %>
+                                        </p>
                                         <div data-v-2265de1f="" class="text-sm leading-5 text-gray-500 inline-flex ">
-                        
-                                            
-                                    </div>
-                                </div>
-                            </div>
 
 
-                            <div data-v-2265de1f="" class="flex flex-wrap mb-12">
-                                <div data-v-2265de1f="" class="w-full md:w-1/1 p-4">
-                                    <p data-v-2265de1f="" class="text-xl"> Hotspot Information</p>
-                                    <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                        <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                            <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
-                                                    <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                        <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> Name</th>
-                                                        <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
-                                                            <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-purple-800">
-                                                                <%= hotspot.data.name %>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                        <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> Location</th>
-                                                        <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
-                                                            <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-purple-800">
-                                                                <%= hotspot.data.geocode.short_country %> >
-                                                                <%= hotspot.data.geocode.long_state %>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                        <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> Status</th>
-                                                        <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
-                                                            <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-purple-800">
-                                                                <%= hotspot.data.status.online %>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                        <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">Score</th>
-                                                        <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
-                                                            <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-purple-800">
-                                                                <%= hotspot.data.score %>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                        <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">Rewards</th>
-                                                        <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
-                                                            <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-purple-800">
-                                                                <%= hotspot.data.reward_scale %>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                    
-                                                </table>
-
-                                                
-                                                <div id="mydiv" data-lng=<%=hotspot.data.lng %>></div>
-                                <div id="mydiv2" data-lat=<%=hotspot.data.lat %>></div>
-                                
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
+
+                                <div id='map' class="container m-4" style='min-width: 350px; min-height: 300px;'></div>
+
+
+                                <div data-v-2265de1f="" class="flex flex-wrap mb-12">
+                                    <div data-v-2265de1f="" class="w-full md:w-1/3 p-4">
+                                        <p data-v-2265de1f="" class="text-xl"> Hotspot Information</p>
+                                        <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                            <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                    <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> Name</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= hotspot.data.name %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> Location</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= hotspot.data.geocode.short_country %> >
+                                                                        <%= hotspot.data.geocode.long_state %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> Status</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= hotspot.data.status.online %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">Score</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= hotspot.data.score %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">Rewards</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= hotspot.data.reward_scale %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </table>
+
+
+                                                    <div id="mydiv" data-lng=<%=hotspot.data.lng %>></div>
+                                                    <div id="mydiv2" data-lat=<%=hotspot.data.lat %>></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-v-2265de1f="" class="w-full md:w-2/3 p-4">
+                                        <p data-v-2265de1f="" class="text-xl"> Host</p>
+                                        <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                            <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
+                                                    
+                                                                 
+                                                        <div data-v-2265de1f="" class="relative inline-flex">
+                                                            <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
+                                                                <path data-v-2265de1f="" d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero">
+
+                                                                </path>
+                                                            </svg>
+                                                            <select data-v-2265de1f="" id="hostName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                                                                <option data-v-2265de1f="" disabled="disabled" selected="selected">Select your host</option> 
+                                                            </select>
+                                                        </div>
+                                                        
+                                                        <a data-v-2265de1f="" href="/hpr">
+                                                            <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                                             Manage Hosts
+                                   
+                                                            </button>
+                                                        </a>
+                                                        <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
+                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_reward_share">
+                                                                        <span>Reward Share (%)
+
+                                                                        </span>
+                                                                    </label>
+                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="host_reward_share" type="text" placeholder="0" name="rewardShare">
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
+                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_offset_hnt">
+                                                                        <span>
+                                                                            Offset HNT
+
+                                                                        </span>
+                                                                    </label>
+                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="host_offset_hnt" type="text" placeholder="0">
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 ">
+                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_start_date">
+                                                                        <span>Start Date</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" type="date"
+                                                                        id="host_start_date" placeholder="yyyy-mm-dd"></div>
+                                                            </div>
+                                                            <div class="row-span-2">
+                                                                <div data-v-2265de1f="" class=" grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 ">
+                                                                    <button id="host-submit" data-v-2265de1f="" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
+                                                                    focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+    
+                                                                            SAVE                                    
+                                            
+                                                      
+                                                                </button>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    
+                                                    <hr data-v-2265de1f="">
+                                                   
+                                                        <div data-v-2265de1f="" class="mt-4 mb-2">Host Reward</div>
+                                                        <div data-v-2265de1f="" class="flex mb-4">
+                                                            <div data-v-2265de1f="" class="w-4/5">
+                                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                                    <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
+                                                                        <thead data-v-2265de1f="">
+                                                                            <tr data-v-2265de1f="">
+                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total</th>
+                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total Paid</th>
+                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> To be Paid</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody data-v-2265de1f="" class="bg-white divide-y divide-gray-200">
+                                                                            <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                                                <td data-v-2265de1f="" class="host-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                                <td data-v-2265de1f="" class="host-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                                <td data-v-2265de1f="" class="host-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="w-1/5">
+                                                                <div data-v-2265de1f="">
+                                                                    <button id="host-pay" type="button" data-v-2265de1f="" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
+                                                                    focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+    
+                                                                           Pay                                   
+                                            
+                                                      
+                                                                </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                   
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p data-v-2265de1f="" class="text-xl mt-10"> Referral</p>
+                                        <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                            <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
+                                                    
+                                                        <div data-v-2265de1f="" class="relative inline-flex">
+                                                            <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
+                                                                <path data-v-2265de1f="" d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"></path>
+                                                            </svg>
+                                                            <select data-v-2265de1f="" id="referralName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"><option data-v-2265de1f="" disabled="disabled" selected="selected">Select your referral</option> </select></div>
+                                                        <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                    Update
+                                </button>
+                                                        <a data-v-2265de1f="" href="/hpr">
+                                                            <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                        Manage Referrals
+                                    </button>
+                                                        </a>
+                                                        <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_reward_share"><span>Reward Share (%)</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                        id="referral_reward_share" type="text" placeholder="0"></div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_offset_hnt"><span>Offset HNT</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                        id="referral_offset_hnt" type="text" placeholder="0"></div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 "><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_start_date"><span>Start Date</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                        type="date" id="referral_start_date" placeholder="yyyy-mm-dd"></div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                                                <button data-v-2265de1f=""  class="referral-submit inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
+                                                                focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+
+                                                                        SAVE                                    
+                                        
+                                                  
+                                                            </button>
+                                                            </div>
+
+
+                                                        </div>
+                                                    
+                                                    <hr data-v-2265de1f="">
+                                                    
+                                                        <div data-v-2265de1f="" class="mt-4 mb-2">Referral Reward</div>
+                                                        <div data-v-2265de1f="" class="flex mb-4">
+                                                            <div data-v-2265de1f="" class="w-4/5">
+                                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                                    <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
+                                                                        <thead data-v-2265de1f="">
+                                                                            <tr data-v-2265de1f="">
+                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total</th>
+                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total Paid</th>
+                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> To be Paid</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody data-v-2265de1f="" class="bg-white divide-y divide-gray-200">
+                                                                            <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                                                <td data-v-2265de1f="" class="referral-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                                <td data-v-2265de1f="" class="referral-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                                <td data-v-2265de1f="" class="referral-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="w-1/5">
+                                                                <div data-v-2265de1f=""><button id="referral-pay" data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right"><svg data-v-2265de1f="" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2"><path data-v-2265de1f="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
+                                                Pay
+                                            </button></div>
+                                                            </div>
+                                                        </div>
+                                                    
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p data-v-2265de1f="" class="text-xl mt-10"> Partner</p>
+                                        <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                            <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
+                                                    
+
+                                                        <div data-v-2265de1f="" class="relative inline-flex">
+                                                            <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
+                                                                <path data-v-2265de1f="" d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero">
+
+                                                                </path></svg> <select data-v-2265de1f="" id="partnerName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"><option data-v-2265de1f="" disabled="disabled" selected="selected">Select your partner</option> </select>
+                                                        </div>
+                                                        <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                                            Update
+                                
+                                                        </button>
+                                                        <a data-v-2265de1f="" href="/hpr">
+                                                            <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                                                Manage Partners
+                                    
+                                        
+                                                  
+                                                            </button>
+                                                        </a>
+                                                        <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
+                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_reward_share">
+                                                                        <span>Reward Share (%)
+
+                                                                        </span>
+                                                                    </label>
+                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="partner_reward_share" type="text" placeholder="0">
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_offset_hnt"><span>Offset HNT</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                        id="partner_offset_hnt" type="text" placeholder="0"></div>
+                                                            </div>
+                                                            <div data-v-2265de1f="" class="row-span-2">
+                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 ">
+                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_start_date">
+                                                                        <span>Start Date
+
+                                                                        </span>
+                                                                    </label>
+                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" type="date" id="partner_start_date" placeholder="yyyy-mm-dd">
+
+
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div data-v-2265de1f="" class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                                                <button data-v-2265de1f="" id="partner-submit" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
+                                                                focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+
+                                                                        SAVE                                    
+                                        
+                                                  
+                                                            </button>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    
+                                                    <hr data-v-2265de1f=" ">
+                                                    
+                                                        <div data-v-2265de1f=" " class="mt-4 mb-2 ">Partner Reward</div>
+                                                        <div data-v-2265de1f=" " class="flex mb-4 ">
+                                                            <div data-v-2265de1f=" " class="w-4/5 ">
+                                                                <div data-v-2265de1f=" " class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg ">
+                                                                    <table data-v-2265de1f=" " class="min-w-full divide-y divide-gray-200 ">
+                                                                        <thead data-v-2265de1f=" ">
+                                                                            <tr data-v-2265de1f=" ">
+                                                                                <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> Total</th>
+                                                                                <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> Total Paid</th>
+                                                                                <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> To be Paid</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody data-v-2265de1f=" " class="bg-white divide-y divide-gray-200 ">
+                                                                            <tr data-v-2265de1f=" " class="hover:bg-gray-50 ">
+                                                                                <td data-v-2265de1f=" " class="partner-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
+                                                                                <td data-v-2265de1f=" " class="partner-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
+                                                                                <td data-v-2265de1f=" " class="partner-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-2265de1f=" " class="w-1/5 ">
+                                                                <div data-v-2265de1f=" ">
+                                                                    <button data-v-2265de1f=" " type="button " id="partner-pay" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
+                                                                hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+                                                                        <svg data-v-2265de1f=" " fill="none " stroke="currentColor " viewBox="0 0 24 24 " xmlns="http://www.w3.org/2000/svg " class="w-6 h-6 mr-2 ">
+                                                                            <path data-v-2265de1f=" " stroke-linecap="round " stroke-linejoin="round " stroke-width="2 " d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12 ">
+
+                                                                            </path>
+                                                                        </svg>
+                                                                     Pay
+                                     
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+
+
+                                <hr data-v-2265de1f=" ">
+                                <button class="del-hotspot mt-3 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none
+                                                                focus:border-red-700 focus:shadow-outline-red active:bg-red-600 transition ease-in-out duration-150 ">Delete Hotspot</button>
+                                <div data-v-2265de1f=" " class="v-portal " style="display: none; "></div>
+                                <div data-v-2265de1f=" " class="v-portal " style="display: none; "></div>
+                                <div data-v-2265de1f=" " class="v-portal " style="display: none; "></div>
+                                <div data-v-2265de1f=" " class="v-portal " style="display: none; "></div>
                             </div>
-
-
-
-                            <hr data-v-2265de1f="">
-                            <button class="del-hotspot inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-600 transition ease-in-out duration-150">Delete Hotspot</button>
-                            <div data-v-2265de1f="" class="v-portal" style="display: none;"></div>
-                            <div data-v-2265de1f="" class="v-portal" style="display: none;"></div>
-                            <div data-v-2265de1f="" class="v-portal" style="display: none;"></div>
-                            <div data-v-2265de1f="" class="v-portal" style="display: none;"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
+
         </main>
 
-        <footer class="bg-white">
-            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-                <div class="flex justify-center space-x-6 md:order-2"><a href="mailto:daniel@hotspotty.net" class="text-gray-400 hover:text-gray-500"><span class="sr-only">Email</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path></svg></a>                    <a href="https://discord.com/channels/404106811252408320/783868820641021952" target="_blank" class="text-gray-400 hover:text-gray-500"><span class="sr-only">Discord</span> <svg fill="currentColor" width="24" height="24" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M 386 203C 387 203 388 203 388 203C 388 203 395 212 395 212C 267 248 209 304 209 304C 209 304 224 296 250 284C 326 250 386 241 411 239C 415 238 419 238 423 238C 466 232 515 231 566 236C 633 244 705 264 779 304C 779 304 723 251 603 214C 603 214 612 203 612 203C 612 203 709 201 811 277C 811 277 913 462 913 689C 913 689 853 792 697 797C 697 797 671 767 650 740C 743 714 778 656 778 656C 749 675 721 688 697 697C 661 712 627 722 594 728C 526 740 464 737 411 727C 371 719 336 708 307 697C 291 690 273 682 255 673C 253 671 251 670 249 669C 248 668 247 668 246 667C 233 660 226 655 226 655C 226 655 260 711 350 738C 329 765 303 797 303 797C 146 792 87 689 87 689C 87 462 189 277 189 277C 284 206 375 203 386 203C 386 203 386 203 386 203M 368 467C 327 467 296 502 296 545C 296 588 328 624 368 624C 408 624 440 588 440 545C 441 502 408 467 368 467C 368 467 368 467 368 467M 626 467C 586 467 554 502 554 545C 554 588 586 624 626 624C 666 624 698 588 698 545C 698 502 666 467 626 467C 626 467 626 467 626 467"></path></svg></a>                    <a href="https://twitter.com/hotspotty" target="_blank" class="text-gray-400 hover:text-gray-500"><span class="sr-only">Twitter</span> <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a></div>
-                <div class="mt-8 md:mt-0 md:order-1">
-                    <p class="text-center text-base text-gray-400">
+        <footer class="bg-white ">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8 ">
+                <div class="flex justify-center space-x-6 md:order-2 "><a href="mailto:daniel@hotspotty.net " class="text-gray-400 hover:text-gray-500 "><span class="sr-only ">Email</span> <svg xmlns="http://www.w3.org/2000/svg " fill="none
+                                                                " viewBox="0 0 24 24 " stroke="currentColor " class="h-6 w-6 "><path stroke-linecap="round " stroke-linejoin="round " stroke-width="2 " d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2
+                                                                2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76
+                                                                "></path></svg></a> <a href="https://discord.com/channels/404106811252408320/783868820641021952 " target="_blank " class="text-gray-400 hover:text-gray-500 "><span class="sr-only ">Discord</span> <svg fill="currentColor
+                                                                " width="24 " height="24 " viewBox="0 0 1000 1000 " xmlns="http://www.w3.org/2000/svg "><path d="M 386 203C 387 203 388 203 388 203C 388 203 395 212 395 212C 267 248 209 304 209 304C 209 304 224 296
+                                                                250 284C 326 250 386 241 411 239C 415 238 419 238 423 238C 466 232 515 231 566 236C 633 244 705 264 779 304C 779 304 723 251 603 214C 603 214 612 203 612 203C 612 203 709 201 811 277C 811 277
+                                                                913 462 913 689C 913 689 853 792 697 797C 697 797 671 767 650 740C 743 714 778 656 778 656C 749 675 721 688 697 697C 661 712 627 722 594 728C 526 740 464 737 411 727C 371 719 336 708 307 697C
+                                                                291 690 273 682 255 673C 253 671 251 670 249 669C 248 668 247 668 246 667C 233 660 226 655 226 655C 226 655 260 711 350 738C 329 765 303 797 303 797C 146 792 87 689 87 689C 87 462 189 277 189
+                                                                277C 284 206 375 203 386 203C 386 203 386 203 386 203M 368 467C 327 467 296 502 296 545C 296 588 328 624 368 624C 408 624 440 588 440 545C 441 502 408 467 368 467C 368 467 368 467 368 467M 626
+                                                                467C 586 467 554 502 554 545C 554 588 586 624 626 624C 666 624 698 588 698 545C 698 502 666 467 626 467C 626 467 626 467 626 467 "></path></svg></a> <a href="https://twitter.com/hotspotty
+                                                                " target="_blank " class="text-gray-400 hover:text-gray-500 "><span class="sr-only ">Twitter</span> <svg fill="currentColor " viewBox="0 0 24 24 " aria-hidden="true " class="h-6 w-6 "><path d="M8.29 20.251c7.547
+                                                                0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65
+                                                                0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616
+                                                                0 006.29 1.84 "></path></svg></a></div>
+                <div class="mt-8 md:mt-0 md:order-1 ">
+                    <p class="text-center text-base text-gray-400 ">
                         © 2021 TrackMyHNT
                     </p>
                 </div>
             </div>
         </footer>
-    </div>
+        </div>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21RSP2T54D"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async=" " src="https://www.googletagmanager.com/gtag/js?id=G-21RSP2T54D "></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
 
-        gtag('config', 'G-21RSP2T54D');
-    </script>
+            gtag('config', 'G-21RSP2T54D');
+        </script>
 
-    <script src="../public/js/main.js"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-    <script>
-        var lng= document.getElementById('mydiv').dataset.lng;
-        var lat = document.getElementById('mydiv2').dataset.lat;
-        mapboxgl.accessToken = 'pk.eyJ1IjoiemFpbmhpdGhlciIsImEiOiJja29vbDBreTgwYzhoMnNwYzkxams3cnhvIn0.LbIecz0d6jkDn9GLl_UPZA';
-        var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        zoom: 11.5,
-        center: [lng,lat]
-});
-
-var marker = new mapboxg1.Marker()
-    .setLngLat([lng,lat])
-    .addTo(map);
-    </script>
-
-    <script>
-        let deleteBtn = document.querySelector(".del-hotspot");
-        let hotspotId = window.location.href;
-        let hotspotUrl = hotspotId.split("/")[4];
-
-        deleteBtn.addEventListener("click", function(){
-            fetch(`http://trackmyhnt.com/deletehotspot/${hotspotUrl}`, {
-                    method: 'DELETE',
-                })
-                .then(res => res.json()) // or res.json()
-                .then(res => window.location.href="http://trackmyhnt.com/hotspot")
-				.catch(err=> window.location.href="http://trackmyhnt.com/hotspot");
-                    
+        <script src="../public/js/main.js "></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <script>
+            var lng = document.getElementById('mydiv').dataset.lng;
+            var lat = document.getElementById('mydiv2').dataset.lat;
+            mapboxgl.accessToken = 'pk.eyJ1IjoiemFpbmhpdGhlciIsImEiOiJja29vbDBreTgwYzhoMnNwYzkxams3cnhvIn0.LbIecz0d6jkDn9GLl_UPZA';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                zoom: 11.5,
+                center: [lng, lat]
             });
+
+            var marker = new mapboxg1.Marker()
+                .setLngLat([lng, lat])
+                .addTo(map);
+        </script>
+
+        <script>
+
+        let hostSelect = document.getElementById("hostName");
+        fetch("http://trackmyhnt.com/host/hosts")
+            .then((res)=> res.json())
+            .then((data)=> {
+                for(let host of data.hosts) {
+                    let option = document.createElement("option");
+                    option.value = host._id;
+                    option.text= host.name;
+                    hostSelect.appendChild(option);
+                }
+            });
+
+        let hostSubmit = document.getElementById("host-submit");
+        let hostStartDate = document.getElementById("host_start_date");
+        let hostOffsetHnt = document.getElementById("host_offset_hnt");
+        let hostRewardShare = document.getElementById("host_reward_share");
+        let hostDate = "";
+        let hostTotalTd = document.querySelector(".host-total-td");
+        let hostPaidTd = document.querySelector(".host-paid-td");
+        let hostToBePaidTd = document.querySelector(".host-to-be-paid-td");
+
+        hostStartDate.onchange = function(e) {
+            hostDate = e.target.value;
+        }
+
+        let hostToBePaid="";
+
+
+        hostSubmit.addEventListener("click", function(e){
+           
+            let url = window.location.href;
+            let parts = url.split("/");
+            fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${hostDate}`)
+                .then((res)=> res.json())
+                .then((data)=> {
+                    data.data.total = parseFloat(data.data.total);
+            
+                    console.log(hostOffsetHnt.value, hostRewardShare.value);
+                    hostToBePaid = data.data.total - (data.data.total * (hostRewardShare.value/100)) + hostOffsetHnt.value;
+                    console.log(hostToBePaid);
+                    console.log("TOTAL WAS: ", data.data.total);
+                    const putMethod = {
+                        method: 'PUT', // Method itself
+                        headers: {
+                        'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                        },
+                    body: JSON.stringify({toBePaid: hostToBePaid}) // We send data in JSON format
+                    };
+                    fetch(`http://trackmyhnt.com/host/savehost/${hostSelect.value}`, putMethod)
+                        .then((res)=> res.json())
+                        .then((data2)=> {
+                            hostTotalTd.textContent = data.data.total;
+                            hostPaidTd.textContent = 0;
+                            hostToBePaidTd.textContent = hostToBePaid;
+                        })
+                        .catch((err)=> console.log(err))
+                });
+        })    
+
+        let hostPay = document.getElementById("host-pay");
+
+       
         
 
-    </script>
+        hostPay.addEventListener("click", function(){
+            fetch(`http://trackmyhnt.com/host/host/${hostSelect.value}`)
+                .then((resp)=> resp.json())
+                .then((data)=> {
+                    console.log(data);
+                    let payPut = {
+                    method: "PUT",
+                    headers: {
+                    'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                    },
+                    body: JSON.stringify({paid: data.host.toBePaid}) // We send data in JSON format
+        };
+                    fetch(`http://trackmyhnt.com/host/payhost/${hostSelect.value}`, payPut)
+                    .then((res)=> res.json())
+                    .then((data3)=> {
+                    hostPaidTd.textContent = hostToBePaidTd.textContent;
+                    hostToBePaidTd.textContent = "";
+                    alert("You have paid successfully");
+                })
+                })
+            
+        })
+
+            </script>
+
+<script>
+
+    let referralSelect = document.getElementById("referralName");
+    fetch("http://trackmyhnt.com/referral/referrals")
+        .then((res)=> res.json())
+        .then((data)=> {
+            for(let referral of data.referrals) {
+                let option = document.createElement("option");
+                option.value = referral._id;
+                option.text= referral.name;
+                referralSelect.appendChild(option);
+            }
+        });
+
+    let referralSubmit = document.querySelector(".referral-submit");
+    let referralStartDate = document.getElementById("referral_start_date");
+    let referralOffsetHnt = document.getElementById("referral_offset_hnt");
+    let referralRewardShare = document.getElementById("referral_reward_share");
+    let referralDate = "";
+    let referralTotalTd = document.querySelector(".referral-total-td");
+    let referralPaidTd = document.querySelector(".referral-paid-td");
+    let referralToBePaidTd = document.querySelector(".referral-to-be-paid-td");
+
+    referralStartDate.onchange = function(e) {
+        referralDate = e.target.value;
+    }
+
+    let referralToBePaid="";
+
+
+    referralSubmit.addEventListener("click", function(e){
+       
+        let url = window.location.href;
+        let parts = url.split("/");
+        fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${referralDate}`)
+            .then((res)=> res.json())
+            .then((data)=> {
+                data.data.total = parseFloat(data.data.total);
+        
+                console.log(referralOffsetHnt.value, referralRewardShare.value);
+                referralToBePaid = data.data.total - (data.data.total * (referralRewardShare.value/100)) + hostOffsetHnt.value;
+                console.log(referralToBePaid);
+                console.log("TOTAL WAS: ", data.data.total);
+                const putMethod = {
+                    method: 'PUT', // Method itself
+                    headers: {
+                    'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                    },
+                body: JSON.stringify({toBePaid: referralToBePaid}) // We send data in JSON format
+                };
+                fetch(`http://trackmyhnt.com/referral/savereferral/${referralSelect.value}`, putMethod)
+                    .then((res)=> res.json())
+                    .then((data2)=> {
+                        referralTotalTd.textContent = data.data.total;
+                        referralPaidTd.textContent = 0;
+                        referralToBePaidTd.textContent = referralToBePaid;
+                    })
+                    .catch((err)=> console.log(err))
+            });
+    })    
+
+    let referralPay = document.getElementById("referral-pay");
+
+
+    referralPay.addEventListener("click", function(){
+        fetch(`http://trackmyhnt.com/referral/referral/${referralSelect.value}`)
+            .then((resp)=> resp.json())
+            .then((data)=> {
+                console.log(data);
+                let payPut = {
+                method: "PUT",
+                headers: {
+                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                },
+                body: JSON.stringify({paid: data.referral.toBePaid}) // We send data in JSON format
+    };
+                fetch(`http://trackmyhnt.com/referral/payreferral/${referralSelect.value}`, payPut)
+                .then((res)=> res.json())
+                .then((data3)=> {
+                referralPaidTd.textContent = referralToBePaidTd.textContent;
+                referralToBePaidTd.textContent = "";
+                alert("You have paid successfully");
+            })
+            })
+        
+    })
+
+        </script>
+
+        <script>
+             let partnerSelect = document.getElementById("partnerName");
+    fetch("http://trackmyhnt.com/partner/partners")
+        .then((res)=> res.json())
+        .then((data)=> {
+            for(let partner of data.partners) {
+                let option = document.createElement("option");
+                option.value = partner._id;
+                option.text= partner.name;
+                partnerSelect.appendChild(option);
+            }
+        });
+
+    let partnerSubmit = document.getElementById("partner-submit");
+    let partnerStartDate = document.getElementById("partner_start_date");
+    let partnerOffsetHnt = document.getElementById("partner_offset_hnt");
+    let partnerRewardShare = document.getElementById("partner_reward_share");
+    let partnerDate = "";
+    let partnerTotalTd = document.querySelector(".partner-total-td");
+    let partnerPaidTd = document.querySelector(".partner-paid-td");
+    let partnerToBePaidTd = document.querySelector(".partner-to-be-paid-td");
+
+    partnerStartDate.onchange = function(e) {
+        partnerDate = e.target.value;
+    }
+
+    let partnerToBePaid="";
+
+
+    partnerSubmit.addEventListener("click", function(e){
+       
+        let url = window.location.href;
+        let parts = url.split("/");
+        fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${partnerDate}`)
+            .then((res)=> res.json())
+            .then((data)=> {
+                data.data.total = parseFloat(data.data.total);
+        
+                console.log(partnerOffsetHnt.value, partnerRewardShare.value);
+                partnerToBePaid = data.data.total - (data.data.total * (partnerRewardShare.value/100)) + hostOffsetHnt.value;
+                console.log(partnerToBePaid);
+                console.log("TOTAL WAS: ", data.data.total);
+                const putMethod = {
+                    method: 'PUT', // Method itself
+                    headers: {
+                    'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                    },
+                body: JSON.stringify({toBePaid: partnerToBePaid}) // We send data in JSON format
+                };
+                fetch(`http://trackmyhnt.com/partner/savepartner/${partnerSelect.value}`, putMethod)
+                    .then((res)=> res.json())
+                    .then((data2)=> {
+                        partnerTotalTd.textContent = data.data.total;
+                        partnerPaidTd.textContent = 0;
+                        partnerToBePaidTd.textContent = partnerToBePaid;
+                    })
+                    .catch((err)=> console.log(err))
+            });
+    })    
+
+    let partnerPay = document.getElementById("partner-pay");
+
+
+    partnerPay.addEventListener("click", function(){
+        fetch(`http://trackmyhnt.com/partner/partner/${partnerSelect.value}`)
+            .then((resp)=> resp.json())
+            .then((data)=> {
+                console.log(data);
+                let payPut = {
+                method: "PUT",
+                headers: {
+                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                },
+                body: JSON.stringify({paid: data.partner.toBePaid}) // We send data in JSON format
+    };
+                fetch(`http://trackmyhnt.com/partner/paypartner/${partnerSelect.value}`, payPut)
+                .then((res)=> res.json())
+                .then((data3)=> {
+                partnerPaidTd.textContent = partnerToBePaidTd.textContent;
+                partnerToBePaidTd.textContent = "";
+                alert("You have paid successfully");
+            })
+            })
+        
+    })
+
+        </script>
+
+
+        <script>
+            let deleteBtn = document.querySelector(".del-hotspot ");
+            let hotspotId = window.location.href;
+            let hotspotUrl = hotspotId.split("/ ")[4];
+
+            deleteBtn.addEventListener("click ", function() {
+                fetch(`http://trackmyhnt.com/deletehotspot/${hotspotUrl}`, {
+                        method: 'DELETE',
+                    })
+                    .then(res => res.json()) // or res.json()
+                    .then(res => window.location.href = "http://trackmyhnt.com/hotspot ")
+                    .catch(err => window.location.href = "http://trackmyhnt.com/hotspot ");
+
+            });
+        </script>
 
 </body>
 
