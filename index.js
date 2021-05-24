@@ -34,6 +34,9 @@ app.use(express.urlencoded({ extended: false }));
 const userRoutes = require("./routes/userRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const heliumRoutes = require("./routes/heliumRoutes");
+const hostRoutes = require("./routes/hostRoutes");
+const referralRoutes = require("./routes/referralRoutes");
+const partnerRoutes = require("./routes/partnerRoutes");
 
 //Middlewares
 
@@ -41,6 +44,9 @@ const heliumRoutes = require("./routes/heliumRoutes");
 app.use("/users", userRoutes);
 app.use("/", templateRoutes);
 app.use("/", heliumRoutes);
+app.use("/host", hostRoutes);
+app.use("/referral",referralRoutes);
+app.use("/partner",partnerRoutes);
 
 //DB
 const connectDB = process.env.CONNECTION_STRING;
