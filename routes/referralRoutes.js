@@ -46,6 +46,7 @@ router.put("/savereferral/:id", protect, asyncHandler(async(req,res)=>{
 router.put("/payreferral/:id", protect, asyncHandler(async(req,res)=>{
     const referral = await Referral.findOne({_id: req.params.id});
     if(!referral) return res.send("Error! No referral found");
+    referral.toBePaid = null;
     referral.paid = req.body.paid;
     await referral.save();
     res.json({referral});

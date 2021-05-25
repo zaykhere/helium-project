@@ -1329,105 +1329,107 @@
                                         <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                             <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                                 <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
-                                                    
-                                                                 
-                                                        <div data-v-2265de1f="" class="relative inline-flex">
-                                                            <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
+
+
+                                                    <div data-v-2265de1f="" class="relative inline-flex">
+                                                        <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
                                                                 <path data-v-2265de1f="" d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero">
 
                                                                 </path>
                                                             </svg>
-                                                            <select data-v-2265de1f="" id="hostName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                                                        <select data-v-2265de1f="" id="hostName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
                                                                 <option data-v-2265de1f="" disabled="disabled" selected="selected">Select your host</option> 
                                                             </select>
-                                                        </div>
-                                                        
-                                                        <a data-v-2265de1f="" href="/hpr">
-                                                            <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                                    </div>
+
+                                                    <a data-v-2265de1f="" href="/hpr">
+                                                        <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
                                                              Manage Hosts
                                    
                                                             </button>
-                                                        </a>
-                                                        <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
-                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_reward_share">
+
+
+                                                    </a>
+                                                    <button id="host-submit" data-v-2265de1f="" class=" inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+    
+                                                        Update                                    
+                        
+                                  
+                                            </button>
+                                                    <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
+                                                                <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_reward_share">
                                                                         <span>Reward Share (%)
 
                                                                         </span>
                                                                     </label>
-                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="host_reward_share" type="text" placeholder="0" name="rewardShare">
-                                                                </div>
+                                                                <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="host_reward_share" type="text" placeholder="0" name="rewardShare">
                                                             </div>
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
-                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_offset_hnt">
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
+                                                                <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_offset_hnt">
                                                                         <span>
                                                                             Offset HNT
 
                                                                         </span>
                                                                     </label>
-                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="host_offset_hnt" type="text" placeholder="0">
-                                                                </div>
+                                                                <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="host_offset_hnt" type="text" placeholder="0">
                                                             </div>
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 ">
-                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_start_date">
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 ">
+                                                                <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="host_start_date">
                                                                         <span>Start Date</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" type="date"
-                                                                        id="host_start_date" placeholder="yyyy-mm-dd"></div>
-                                                            </div>
+                                                                    id="host_start_date" placeholder="yyyy-mm-dd"></div>
+                                                        </div>
+                                                        <div data-v-2265de1f="" class=" grid grid-cols-3 md:grid-cols-3 gap-4 mb-6 ">
                                                             <div class="row-span-2">
-                                                                <div data-v-2265de1f="" class=" grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 ">
-                                                                    <button id="host-submit" data-v-2265de1f="" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
-                                                                    focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
-    
-                                                                            SAVE                                    
-                                            
-                                                      
-                                                                </button>
-                                                                </div>
-
                                                             </div>
 
                                                         </div>
-                                                    
+
+
+                                                    </div>
+
                                                     <hr data-v-2265de1f="">
-                                                   
-                                                        <div data-v-2265de1f="" class="mt-4 mb-2">Host Reward</div>
-                                                        <div data-v-2265de1f="" class="flex mb-4">
-                                                            <div data-v-2265de1f="" class="w-4/5">
-                                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                    <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
-                                                                        <thead data-v-2265de1f="">
-                                                                            <tr data-v-2265de1f="">
-                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total</th>
-                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total Paid</th>
-                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> To be Paid</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody data-v-2265de1f="" class="bg-white divide-y divide-gray-200">
-                                                                            <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                                                <td data-v-2265de1f="" class="host-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
-                                                                                <td data-v-2265de1f="" class="host-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
-                                                                                <td data-v-2265de1f="" class="host-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
+
+                                                    <div data-v-2265de1f="" class="mt-4 mb-2">Host Reward</div>
+                                                    <div data-v-2265de1f="" class="flex mb-4">
+                                                        <div data-v-2265de1f="" class="w-4/5">
+                                                            <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                                <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
+                                                                    <thead data-v-2265de1f="">
+                                                                        <tr data-v-2265de1f="">
+                                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total</th>
+                                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total Paid</th>
+                                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> To be Paid</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody data-v-2265de1f="" class="bg-white divide-y divide-gray-200">
+                                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                                            <td data-v-2265de1f="" class="host-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                            <td data-v-2265de1f="" class="host-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                            <td data-v-2265de1f="" class="host-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
-                                                            <div data-v-2265de1f="" class="w-1/5">
-                                                                <div data-v-2265de1f="">
-                                                                    <button id="host-pay" type="button" data-v-2265de1f="" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
-                                                                    focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="w-1/5">
+                                                            <div data-v-2265de1f="">
+                                                                <button id="host-pay" type="button" data-v-2265de1f="" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
+                                                                    focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right "><svg data-v-2265de1f="" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2"><path data-v-2265de1f="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
     
                                                                            Pay                                   
                                             
                                                       
                                                                 </button>
-                                                                </div>
                                                             </div>
                                                         </div>
-                                                   
+                                                    </div>
+
 
                                                 </div>
                                             </div>
@@ -1436,75 +1438,76 @@
                                         <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                             <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                                 <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
-                                                    
-                                                        <div data-v-2265de1f="" class="relative inline-flex">
-                                                            <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
+
+                                                    <div data-v-2265de1f="" class="relative inline-flex">
+                                                        <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
                                                                 <path data-v-2265de1f="" d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"></path>
                                                             </svg>
-                                                            <select data-v-2265de1f="" id="referralName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"><option data-v-2265de1f="" disabled="disabled" selected="selected">Select your referral</option> </select></div>
-                                                       
-                                                        <a data-v-2265de1f="" href="/hpr">
-                                                            <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                                        <select data-v-2265de1f="" id="referralName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"><option data-v-2265de1f="" disabled="disabled" selected="selected">Select your referral</option> </select></div>
+                                                    <a data-v-2265de1f="" href="/hpr">
+                                                        <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
                                         Manage Referrals
                                     </button>
-                                                        </a>
-                                                        <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_reward_share"><span>Reward Share (%)</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
-                                                                        id="referral_reward_share" type="text" placeholder="0"></div>
-                                                            </div>
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_offset_hnt"><span>Offset HNT</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
-                                                                        id="referral_offset_hnt" type="text" placeholder="0"></div>
-                                                            </div>
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 "><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_start_date"><span>Start Date</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
-                                                                        type="date" id="referral_start_date" placeholder="yyyy-mm-dd"></div>
-                                                            </div>
-                                                            <div data-v-2265de1f="" class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                                                <button data-v-2265de1f=""  class="referral-submit inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
-                                                                focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
-
-                                                                        SAVE                                    
-                                        
-                                                  
-                                                            </button>
-                                                            </div>
 
 
+                                                    </a>
+                                                    <button data-v-2265de1f="" class=" referral-submit inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
+                                                    focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+                
+                                                            Update                                    
+                            
+                                      
+                                                </button>
+                                                    <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_reward_share"><span>Reward Share (%)</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                    id="referral_reward_share" type="text" placeholder="0"></div>
                                                         </div>
-                                                    
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_offset_hnt"><span>Offset HNT</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                    id="referral_offset_hnt" type="text" placeholder="0"></div>
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 "><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="referral_start_date"><span>Start Date</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                    type="date" id="referral_start_date" placeholder="yyyy-mm-dd"></div>
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                                        </div>
+
+
+                                                    </div>
+
                                                     <hr data-v-2265de1f="">
-                                                    
-                                                        <div data-v-2265de1f="" class="mt-4 mb-2">Referral Reward</div>
-                                                        <div data-v-2265de1f="" class="flex mb-4">
-                                                            <div data-v-2265de1f="" class="w-4/5">
-                                                                <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                    <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
-                                                                        <thead data-v-2265de1f="">
-                                                                            <tr data-v-2265de1f="">
-                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total</th>
-                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total Paid</th>
-                                                                                <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> To be Paid</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody data-v-2265de1f="" class="bg-white divide-y divide-gray-200">
-                                                                            <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                                                <td data-v-2265de1f="" class="referral-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
-                                                                                <td data-v-2265de1f="" class="referral-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
-                                                                                <td data-v-2265de1f="" class="referral-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
+
+                                                    <div data-v-2265de1f="" class="mt-4 mb-2">Referral Reward</div>
+                                                    <div data-v-2265de1f="" class="flex mb-4">
+                                                        <div data-v-2265de1f="" class="w-4/5">
+                                                            <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                                <table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200">
+                                                                    <thead data-v-2265de1f="">
+                                                                        <tr data-v-2265de1f="">
+                                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total</th>
+                                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Total Paid</th>
+                                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> To be Paid</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody data-v-2265de1f="" class="bg-white divide-y divide-gray-200">
+                                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                                            <td data-v-2265de1f="" class="referral-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                            <td data-v-2265de1f="" class="referral-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                            <td data-v-2265de1f="" class="referral-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3"> 0.00</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
-                                                            <div data-v-2265de1f="" class="w-1/5">
-                                                                <div data-v-2265de1f=""><button id="referral-pay" data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right"><svg data-v-2265de1f="" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2"><path data-v-2265de1f="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="w-1/5">
+                                                            <div data-v-2265de1f=""><button id="referral-pay" data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right"><svg data-v-2265de1f="" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2"><path data-v-2265de1f="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
                                                 Pay
                                             </button></div>
-                                                            </div>
                                                         </div>
-                                                    
+                                                    </div>
+
 
                                                 </div>
                                             </div>
@@ -1513,92 +1516,94 @@
                                         <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                             <div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                                 <div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
-                                                    
 
-                                                        <div data-v-2265de1f="" class="relative inline-flex">
-                                                            <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
+
+                                                    <div data-v-2265de1f="" class="relative inline-flex">
+                                                        <svg data-v-2265de1f="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232" class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none">
                                                                 <path data-v-2265de1f="" d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero">
 
                                                                 </path></svg> <select data-v-2265de1f="" id="partnerName" class="border border-gray-300 rounded-lg text-gray-600 h-10 pl-2 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"><option data-v-2265de1f="" disabled="disabled" selected="selected">Select your partner</option> </select>
-                                                        </div>
-                                                                                                                <a data-v-2265de1f="" href="/hpr">
-                                                            <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
+                                                    </div>
+                                                    <a data-v-2265de1f="" href="/hpr">
+                                                        <button data-v-2265de1f="" type="button" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right">
                                                                 Manage Partners
                                     
                                         
                                                   
                                                             </button>
-                                                        </a>
-                                                        <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
-                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_reward_share">
+
+                                                    </a>
+                                                    <button data-v-2265de1f="" id="partner-submit" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
+                                                    focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
+
+                                                            Update                                    
+                            
+                                      
+                                                </button>
+                                                    <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4">
+                                                                <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_reward_share">
                                                                         <span>Reward Share (%)
 
                                                                         </span>
                                                                     </label>
-                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="partner_reward_share" type="text" placeholder="0">
-                                                                </div>
+                                                                <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" id="partner_reward_share" type="text" placeholder="0">
                                                             </div>
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_offset_hnt"><span>Offset HNT</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
-                                                                        id="partner_offset_hnt" type="text" placeholder="0"></div>
-                                                            </div>
-                                                            <div data-v-2265de1f="" class="row-span-2">
-                                                                <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 ">
-                                                                    <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_start_date">
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4"><label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_offset_hnt"><span>Offset HNT</span></label> <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block"
+                                                                    id="partner_offset_hnt" type="text" placeholder="0"></div>
+                                                        </div>
+                                                        <div data-v-2265de1f="" class="row-span-2">
+                                                            <div data-v-2265de1f="" class="col-span-6 sm:col-span-4 mt-4 ">
+                                                                <label data-v-2265de1f="" class="block font-medium text-sm text-gray-700" for="partner_start_date">
                                                                         <span>Start Date
 
                                                                         </span>
                                                                     </label>
-                                                                    <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" type="date" id="partner_start_date" placeholder="yyyy-mm-dd">
+                                                                <input data-v-2265de1f="" class="form-input rounded-md shadow-sm mt-1 block" type="date" id="partner_start_date" placeholder="yyyy-mm-dd">
 
 
-                                                                </div>
                                                             </div>
+                                                        </div>
 
 
-                                                            <div data-v-2265de1f="" class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                                                <button data-v-2265de1f="" id="partner-submit" class=" inline-flex items-center px-2 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none
-                                                                focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
-
-                                                                        SAVE                                    
-                                        
-                                                  
-                                                            </button>
-                                                            </div>
-
-
+                                                        <div data-v-2265de1f="" class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
 
                                                         </div>
-                                                    
+
+
+
+                                                    </div>
+
                                                     <hr data-v-2265de1f=" ">
-                                                    
-                                                        <div data-v-2265de1f=" " class="mt-4 mb-2 ">Partner Reward</div>
-                                                        <div data-v-2265de1f=" " class="flex mb-4 ">
-                                                            <div data-v-2265de1f=" " class="w-4/5 ">
-                                                                <div data-v-2265de1f=" " class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg ">
-                                                                    <table data-v-2265de1f=" " class="min-w-full divide-y divide-gray-200 ">
-                                                                        <thead data-v-2265de1f=" ">
-                                                                            <tr data-v-2265de1f=" ">
-                                                                                <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> Total</th>
-                                                                                <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> Total Paid</th>
-                                                                                <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> To be Paid</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody data-v-2265de1f=" " class="bg-white divide-y divide-gray-200 ">
-                                                                            <tr data-v-2265de1f=" " class="hover:bg-gray-50 ">
-                                                                                <td data-v-2265de1f=" " class="partner-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
-                                                                                <td data-v-2265de1f=" " class="partner-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
-                                                                                <td data-v-2265de1f=" " class="partner-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
+
+                                                    <div data-v-2265de1f=" " class="mt-4 mb-2 ">Partner Reward</div>
+                                                    <div data-v-2265de1f=" " class="flex mb-4 ">
+                                                        <div data-v-2265de1f=" " class="w-4/5 ">
+                                                            <div data-v-2265de1f=" " class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg ">
+                                                                <table data-v-2265de1f=" " class="min-w-full divide-y divide-gray-200 ">
+                                                                    <thead data-v-2265de1f=" ">
+                                                                        <tr data-v-2265de1f=" ">
+                                                                            <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> Total</th>
+                                                                            <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> Total Paid</th>
+                                                                            <th data-v-2265de1f=" " class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "> To be Paid</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody data-v-2265de1f=" " class="bg-white divide-y divide-gray-200 ">
+                                                                        <tr data-v-2265de1f=" " class="hover:bg-gray-50 ">
+                                                                            <td data-v-2265de1f=" " class="partner-total-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
+                                                                            <td data-v-2265de1f=" " class="partner-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
+                                                                            <td data-v-2265de1f=" " class="partner-to-be-paid-td px-6 py-4 whitespace-no-wrap text-md text-gray-900 leading-3 "> 0.00</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
-                                                            <div data-v-2265de1f=" " class="w-1/5 ">
-                                                                <div data-v-2265de1f=" ">
-                                                                    <button data-v-2265de1f=" " type="button " id="partner-pay" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
+                                                        </div>
+                                                        <div data-v-2265de1f=" " class="w-1/5 ">
+                                                            <div data-v-2265de1f=" ">
+                                                                <button data-v-2265de1f=" " type="button " id="partner-pay" class="inline-flex items-center px-4 py-2 bg-BLUE-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
                                                                 hover:bg-BLUE-700 active:bg-BLUE-900 focus:outline-none focus:border-BLUE-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-2 float-right ">
                                                                         <svg data-v-2265de1f=" " fill="none " stroke="currentColor " viewBox="0 0 24 24 " xmlns="http://www.w3.org/2000/svg " class="w-6 h-6 mr-2 ">
                                                                             <path data-v-2265de1f=" " stroke-linecap="round " stroke-linejoin="round " stroke-width="2 " d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12 ">
@@ -1608,10 +1613,10 @@
                                                                      Pay
                                      
                                                                     </button>
-                                                                </div>
                                                             </div>
                                                         </div>
-                                                    
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -1693,271 +1698,278 @@
         </script>
 
         <script>
-
-        let hostSelect = document.getElementById("hostName");
-        fetch("http://trackmyhnt.com/host/hosts")
-            .then((res)=> res.json())
-            .then((data)=> {
-                for(let host of data.hosts) {
-                    let option = document.createElement("option");
-                    option.value = host._id;
-                    option.text= host.name;
-                    hostSelect.appendChild(option);
-                }
-            });
-
-        let hostSubmit = document.getElementById("host-submit");
-        let hostStartDate = document.getElementById("host_start_date");
-        let hostOffsetHnt = document.getElementById("host_offset_hnt");
-        let hostRewardShare = document.getElementById("host_reward_share");
-        let hostDate = "";
-        let hostTotalTd = document.querySelector(".host-total-td");
-        let hostPaidTd = document.querySelector(".host-paid-td");
-        let hostToBePaidTd = document.querySelector(".host-to-be-paid-td");
-
-        hostStartDate.onchange = function(e) {
-            hostDate = e.target.value;
-        }
-
-        let hostToBePaid="";
-
-
-        hostSubmit.addEventListener("click", function(e){
-           
-            let url = window.location.href;
-            let parts = url.split("/");
-            fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${hostDate}`)
-                .then((res)=> res.json())
-                .then((data)=> {
-                    data.data.total = parseFloat(data.data.total);
-            
-                    console.log(hostOffsetHnt.value, hostRewardShare.value);
-                    hostToBePaid = data.data.total - (data.data.total * (hostRewardShare.value/100)) + hostOffsetHnt.value;
-                    console.log(hostToBePaid);
-                    console.log("TOTAL WAS: ", data.data.total);
-                    const putMethod = {
-                        method: 'PUT', // Method itself
-                        headers: {
-                        'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-                        },
-                    body: JSON.stringify({toBePaid: hostToBePaid}) // We send data in JSON format
-                    };
-                    fetch(`http://trackmyhnt.com/host/savehost/${hostSelect.value}`, putMethod)
-                        .then((res)=> res.json())
-                        .then((data2)=> {
-                            hostTotalTd.textContent = data.data.total;
-                            hostPaidTd.textContent = 0;
-                            hostToBePaidTd.textContent = hostToBePaid;
-                        })
-                        .catch((err)=> console.log(err))
+            let hostSelect = document.getElementById("hostName");
+            fetch("http://trackmyhnt.com/host/hosts")
+                .then((res) => res.json())
+                .then((data) => {
+                    for (let host of data.hosts) {
+                        let option = document.createElement("option");
+                        option.value = host._id;
+                        option.text = host.name;
+                        hostSelect.appendChild(option);
+                    }
                 });
-        })    
 
-        let hostPay = document.getElementById("host-pay");
+            let hostSubmit = document.getElementById("host-submit");
+            let hostStartDate = document.getElementById("host_start_date");
+            let hostOffsetHnt = document.getElementById("host_offset_hnt");
+            let hostRewardShare = document.getElementById("host_reward_share");
+            let hostDate = "";
+            let hostTotalTd = document.querySelector(".host-total-td");
+            let hostPaidTd = document.querySelector(".host-paid-td");
+            let hostToBePaidTd = document.querySelector(".host-to-be-paid-td");
 
-       
-        
-
-        hostPay.addEventListener("click", function(){
-            fetch(`http://trackmyhnt.com/host/host/${hostSelect.value}`)
-                .then((resp)=> resp.json())
-                .then((data)=> {
-                    console.log(data);
-                    let payPut = {
-                    method: "PUT",
-                    headers: {
-                    'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-                    },
-                    body: JSON.stringify({paid: data.host.toBePaid}) // We send data in JSON format
-        };
-                    fetch(`http://trackmyhnt.com/host/payhost/${hostSelect.value}`, payPut)
-                    .then((res)=> res.json())
-                    .then((data3)=> {
-                    hostPaidTd.textContent = hostToBePaidTd.textContent;
-                    hostToBePaidTd.textContent = "";
-                    alert("You have paid successfully");
-                })
-                })
-            
-        })
-
-            </script>
-
-<script>
-
-    let referralSelect = document.getElementById("referralName");
-    fetch("http://trackmyhnt.com/referral/referrals")
-        .then((res)=> res.json())
-        .then((data)=> {
-            for(let referral of data.referrals) {
-                let option = document.createElement("option");
-                option.value = referral._id;
-                option.text= referral.name;
-                referralSelect.appendChild(option);
+            hostStartDate.onchange = function(e) {
+                hostDate = e.target.value;
             }
-        });
 
-    let referralSubmit = document.querySelector(".referral-submit");
-    let referralStartDate = document.getElementById("referral_start_date");
-    let referralOffsetHnt = document.getElementById("referral_offset_hnt");
-    let referralRewardShare = document.getElementById("referral_reward_share");
-    let referralDate = "";
-    let referralTotalTd = document.querySelector(".referral-total-td");
-    let referralPaidTd = document.querySelector(".referral-paid-td");
-    let referralToBePaidTd = document.querySelector(".referral-to-be-paid-td");
-
-    referralStartDate.onchange = function(e) {
-        referralDate = e.target.value;
-    }
-
-    let referralToBePaid="";
+            let hostToBePaid = "";
 
 
-    referralSubmit.addEventListener("click", function(e){
-       
-        let url = window.location.href;
-        let parts = url.split("/");
-        fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${referralDate}`)
-            .then((res)=> res.json())
-            .then((data)=> {
-                data.data.total = parseFloat(data.data.total);
-        
-                console.log(referralOffsetHnt.value, referralRewardShare.value);
-                referralToBePaid = data.data.total - (data.data.total * (referralRewardShare.value/100)) + hostOffsetHnt.value;
-                console.log(referralToBePaid);
-                console.log("TOTAL WAS: ", data.data.total);
-                const putMethod = {
-                    method: 'PUT', // Method itself
-                    headers: {
-                    'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-                    },
-                body: JSON.stringify({toBePaid: referralToBePaid}) // We send data in JSON format
-                };
-                fetch(`http://trackmyhnt.com/referral/savereferral/${referralSelect.value}`, putMethod)
-                    .then((res)=> res.json())
-                    .then((data2)=> {
-                        referralTotalTd.textContent = data.data.total;
-                        referralPaidTd.textContent = 0;
-                        referralToBePaidTd.textContent = referralToBePaid;
+            hostSubmit.addEventListener("click", function(e) {
+
+                let url = window.location.href;
+                let parts = url.split("/");
+                fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${hostDate}`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        data.data.total = parseFloat(data.data.total);
+
+                        console.log(hostOffsetHnt.value, hostRewardShare.value);
+                        hostToBePaid = data.data.total - (data.data.total * (hostRewardShare.value / 100)) + hostOffsetHnt.value;
+                        console.log(hostToBePaid);
+                        console.log("TOTAL WAS: ", data.data.total);
+                        const putMethod = {
+                            method: 'PUT', // Method itself
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                            },
+                            body: JSON.stringify({
+                                    toBePaid: hostToBePaid
+                                }) // We send data in JSON format
+                        };
+                        fetch(`http://trackmyhnt.com/host/savehost/${hostSelect.value}`, putMethod)
+                            .then((res) => res.json())
+                            .then((data2) => {
+                                hostTotalTd.textContent = data.data.total;
+                                hostPaidTd.textContent = 0;
+                                hostToBePaidTd.textContent = hostToBePaid;
+                            })
+                            .catch((err) => console.log(err))
+                    });
+            })
+
+            let hostPay = document.getElementById("host-pay");
+
+
+
+
+            hostPay.addEventListener("click", function() {
+                fetch(`http://trackmyhnt.com/host/host/${hostSelect.value}`)
+                    .then((resp) => resp.json())
+                    .then((data) => {
+                        console.log(data);
+                        let payPut = {
+                            method: "PUT",
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                            },
+                            body: JSON.stringify({
+                                    paid: data.host.toBePaid
+                                }) // We send data in JSON format
+                        };
+                        fetch(`http://trackmyhnt.com/host/payhost/${hostSelect.value}`, payPut)
+                            .then((res) => res.json())
+                            .then((data3) => {
+                                hostPaidTd.textContent = hostToBePaidTd.textContent;
+                                hostToBePaidTd.textContent = "";
+                                alert("You have paid successfully");
+                            })
                     })
-                    .catch((err)=> console.log(err))
-            });
-    })    
 
-    let referralPay = document.getElementById("referral-pay");
-
-
-    referralPay.addEventListener("click", function(){
-        fetch(`http://trackmyhnt.com/referral/referral/${referralSelect.value}`)
-            .then((resp)=> resp.json())
-            .then((data)=> {
-                console.log(data);
-                let payPut = {
-                method: "PUT",
-                headers: {
-                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-                },
-                body: JSON.stringify({paid: data.referral.toBePaid}) // We send data in JSON format
-    };
-                fetch(`http://trackmyhnt.com/referral/payreferral/${referralSelect.value}`, payPut)
-                .then((res)=> res.json())
-                .then((data3)=> {
-                referralPaidTd.textContent = referralToBePaidTd.textContent;
-                referralToBePaidTd.textContent = "";
-                alert("You have paid successfully");
             })
-            })
-        
-    })
-
         </script>
 
         <script>
-             let partnerSelect = document.getElementById("partnerName");
-    fetch("http://trackmyhnt.com/partner/partners")
-        .then((res)=> res.json())
-        .then((data)=> {
-            for(let partner of data.partners) {
-                let option = document.createElement("option");
-                option.value = partner._id;
-                option.text= partner.name;
-                partnerSelect.appendChild(option);
+            let referralSelect = document.getElementById("referralName");
+            fetch("http://trackmyhnt.com/referral/referrals")
+                .then((res) => res.json())
+                .then((data) => {
+                    for (let referral of data.referrals) {
+                        let option = document.createElement("option");
+                        option.value = referral._id;
+                        option.text = referral.name;
+                        referralSelect.appendChild(option);
+                    }
+                });
+
+            let referralSubmit = document.querySelector(".referral-submit");
+            let referralStartDate = document.getElementById("referral_start_date");
+            let referralOffsetHnt = document.getElementById("referral_offset_hnt");
+            let referralRewardShare = document.getElementById("referral_reward_share");
+            let referralDate = "";
+            let referralTotalTd = document.querySelector(".referral-total-td");
+            let referralPaidTd = document.querySelector(".referral-paid-td");
+            let referralToBePaidTd = document.querySelector(".referral-to-be-paid-td");
+
+            referralStartDate.onchange = function(e) {
+                referralDate = e.target.value;
             }
-        });
 
-    let partnerSubmit = document.getElementById("partner-submit");
-    let partnerStartDate = document.getElementById("partner_start_date");
-    let partnerOffsetHnt = document.getElementById("partner_offset_hnt");
-    let partnerRewardShare = document.getElementById("partner_reward_share");
-    let partnerDate = "";
-    let partnerTotalTd = document.querySelector(".partner-total-td");
-    let partnerPaidTd = document.querySelector(".partner-paid-td");
-    let partnerToBePaidTd = document.querySelector(".partner-to-be-paid-td");
-
-    partnerStartDate.onchange = function(e) {
-        partnerDate = e.target.value;
-    }
-
-    let partnerToBePaid="";
+            let referralToBePaid = "";
 
 
-    partnerSubmit.addEventListener("click", function(e){
-       
-        let url = window.location.href;
-        let parts = url.split("/");
-        fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${partnerDate}`)
-            .then((res)=> res.json())
-            .then((data)=> {
-                data.data.total = parseFloat(data.data.total);
-        
-                console.log(partnerOffsetHnt.value, partnerRewardShare.value);
-                partnerToBePaid = data.data.total - (data.data.total * (partnerRewardShare.value/100)) + hostOffsetHnt.value;
-                console.log(partnerToBePaid);
-                console.log("TOTAL WAS: ", data.data.total);
-                const putMethod = {
-                    method: 'PUT', // Method itself
-                    headers: {
-                    'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-                    },
-                body: JSON.stringify({toBePaid: partnerToBePaid}) // We send data in JSON format
-                };
-                fetch(`http://trackmyhnt.com/partner/savepartner/${partnerSelect.value}`, putMethod)
-                    .then((res)=> res.json())
-                    .then((data2)=> {
-                        partnerTotalTd.textContent = data.data.total;
-                        partnerPaidTd.textContent = 0;
-                        partnerToBePaidTd.textContent = partnerToBePaid;
+            referralSubmit.addEventListener("click", function(e) {
+
+                let url = window.location.href;
+                let parts = url.split("/");
+                fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${referralDate}`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        data.data.total = parseFloat(data.data.total);
+
+                        console.log(referralOffsetHnt.value, referralRewardShare.value);
+                        referralToBePaid = data.data.total - (data.data.total * (referralRewardShare.value / 100)) + hostOffsetHnt.value;
+                        console.log(referralToBePaid);
+                        console.log("TOTAL WAS: ", data.data.total);
+                        const putMethod = {
+                            method: 'PUT', // Method itself
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                            },
+                            body: JSON.stringify({
+                                    toBePaid: referralToBePaid
+                                }) // We send data in JSON format
+                        };
+                        fetch(`http://trackmyhnt.com/referral/savereferral/${referralSelect.value}`, putMethod)
+                            .then((res) => res.json())
+                            .then((data2) => {
+                                referralTotalTd.textContent = data.data.total;
+                                referralPaidTd.textContent = 0;
+                                referralToBePaidTd.textContent = referralToBePaid;
+                            })
+                            .catch((err) => console.log(err))
+                    });
+            })
+
+            let referralPay = document.getElementById("referral-pay");
+
+
+            referralPay.addEventListener("click", function() {
+                fetch(`http://trackmyhnt.com/referral/referral/${referralSelect.value}`)
+                    .then((resp) => resp.json())
+                    .then((data) => {
+                        console.log(data);
+                        let payPut = {
+                            method: "PUT",
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                            },
+                            body: JSON.stringify({
+                                    paid: data.referral.toBePaid
+                                }) // We send data in JSON format
+                        };
+                        fetch(`http://trackmyhnt.com/referral/payreferral/${referralSelect.value}`, payPut)
+                            .then((res) => res.json())
+                            .then((data3) => {
+                                referralPaidTd.textContent = referralToBePaidTd.textContent;
+                                referralToBePaidTd.textContent = "";
+                                alert("You have paid successfully");
+                            })
                     })
-                    .catch((err)=> console.log(err))
-            });
-    })    
 
-    let partnerPay = document.getElementById("partner-pay");
-
-
-    partnerPay.addEventListener("click", function(){
-        fetch(`http://trackmyhnt.com/partner/partner/${partnerSelect.value}`)
-            .then((resp)=> resp.json())
-            .then((data)=> {
-                console.log(data);
-                let payPut = {
-                method: "PUT",
-                headers: {
-                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-                },
-                body: JSON.stringify({paid: data.partner.toBePaid}) // We send data in JSON format
-    };
-                fetch(`http://trackmyhnt.com/partner/paypartner/${partnerSelect.value}`, payPut)
-                .then((res)=> res.json())
-                .then((data3)=> {
-                partnerPaidTd.textContent = partnerToBePaidTd.textContent;
-                partnerToBePaidTd.textContent = "";
-                alert("You have paid successfully");
             })
-            })
-        
-    })
+        </script>
 
+        <script>
+            let partnerSelect = document.getElementById("partnerName");
+            fetch("http://trackmyhnt.com/partner/partners")
+                .then((res) => res.json())
+                .then((data) => {
+                    for (let partner of data.partners) {
+                        let option = document.createElement("option");
+                        option.value = partner._id;
+                        option.text = partner.name;
+                        partnerSelect.appendChild(option);
+                    }
+                });
+
+            let partnerSubmit = document.getElementById("partner-submit");
+            let partnerStartDate = document.getElementById("partner_start_date");
+            let partnerOffsetHnt = document.getElementById("partner_offset_hnt");
+            let partnerRewardShare = document.getElementById("partner_reward_share");
+            let partnerDate = "";
+            let partnerTotalTd = document.querySelector(".partner-total-td");
+            let partnerPaidTd = document.querySelector(".partner-paid-td");
+            let partnerToBePaidTd = document.querySelector(".partner-to-be-paid-td");
+
+            partnerStartDate.onchange = function(e) {
+                partnerDate = e.target.value;
+            }
+
+            let partnerToBePaid = "";
+
+
+            partnerSubmit.addEventListener("click", function(e) {
+
+                let url = window.location.href;
+                let parts = url.split("/");
+                fetch(`https://api.helium.io/v1/hotspots/${parts[4]}/rewards/sum?min_time=${partnerDate}`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        data.data.total = parseFloat(data.data.total);
+
+                        console.log(partnerOffsetHnt.value, partnerRewardShare.value);
+                        partnerToBePaid = data.data.total - (data.data.total * (partnerRewardShare.value / 100)) + hostOffsetHnt.value;
+                        console.log(partnerToBePaid);
+                        console.log("TOTAL WAS: ", data.data.total);
+                        const putMethod = {
+                            method: 'PUT', // Method itself
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                            },
+                            body: JSON.stringify({
+                                    toBePaid: partnerToBePaid
+                                }) // We send data in JSON format
+                        };
+                        fetch(`http://trackmyhnt.com/partner/savepartner/${partnerSelect.value}`, putMethod)
+                            .then((res) => res.json())
+                            .then((data2) => {
+                                partnerTotalTd.textContent = data.data.total;
+                                partnerPaidTd.textContent = 0;
+                                partnerToBePaidTd.textContent = partnerToBePaid;
+                            })
+                            .catch((err) => console.log(err))
+                    });
+            })
+
+            let partnerPay = document.getElementById("partner-pay");
+
+
+            partnerPay.addEventListener("click", function() {
+                fetch(`http://trackmyhnt.com/partner/partner/${partnerSelect.value}`)
+                    .then((resp) => resp.json())
+                    .then((data) => {
+                        console.log(data);
+                        let payPut = {
+                            method: "PUT",
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+                            },
+                            body: JSON.stringify({
+                                    paid: data.partner.toBePaid
+                                }) // We send data in JSON format
+                        };
+                        fetch(`http://trackmyhnt.com/partner/paypartner/${partnerSelect.value}`, payPut)
+                            .then((res) => res.json())
+                            .then((data3) => {
+                                partnerPaidTd.textContent = partnerToBePaidTd.textContent;
+                                partnerToBePaidTd.textContent = "";
+                                alert("You have paid successfully");
+                            })
+                    })
+
+            })
         </script>
 
 
@@ -1978,6 +1990,8 @@
         </script>
 
 </body>
+
+</html>
 
 </html>
 

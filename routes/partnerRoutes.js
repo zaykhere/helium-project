@@ -46,6 +46,7 @@ router.put("/savepartner/:id", protect, asyncHandler(async(req,res)=>{
 router.put("/paypartner/:id", protect, asyncHandler(async(req,res)=>{
     const partner = await Partner.findOne({_id: req.params.id});
     if(!partner) return res.send("Error! No partner found");
+    partner.toBePaid = null;
     partner.paid = req.body.paid;
     await partner.save();
     res.json({partner});
