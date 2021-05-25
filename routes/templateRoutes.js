@@ -79,9 +79,9 @@ router.get("/hotspot", protect, asyncHandler(async(req,res)=> {
 }));
 
 router.get("/hpr", protect, asyncHandler(async(req,res)=>{
-    const host = await Host.find();
-    const referral = await Referral.find();
-    const partner = await Partner.find();
+    const host = await Host.find({user: req.user._id});
+    const referral = await Referral.find({user: req.user._id});
+    const partner = await Partner.find({user: req.user._id});
     res.render("hpr", {host: host, referral: referral, partner: partner});
 }))
 
