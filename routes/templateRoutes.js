@@ -58,23 +58,42 @@ router.get("/hotspot", protect, asyncHandler(async(req,res)=> {
     async function getApiData(){
         let hotspotData = [];
         let rewards = [];
+        let totalSumArr = [];
         
         for(let hotspot of hotspots) {
             
             
             let hhotspot = await axios.get(`https://api.helium.io/v1/hotspots/${hotspot.hotspot}`);
-            let reward = await axios.get(`https://api.helium.io/v1/hotspots/${hotspot.hotspot}/rewards/sum`);
+        //    let reward = await axios.get(`https://api.helium.io/v1/hotspots/${hotspot.hotspot}/rewards/sum`);
+            let totalSum = await axios.get(`https://api.helium.io/v1/hotspots/${hotspot.hotspot}/rewards/sum?min_time=-65%20day&bucket=day`)
             
             hotspotData.push(hhotspot.data);
-            rewards.push(reward.data.data.total);
+        //    rewards.push(reward.data.data.total);
+
+            let totals =[];
+            
+            totalSum.data.data.forEach((d)=>{
+                totals.push(d.total);
+            })
+
+           
+            
+            let hotspotTotal = totals.reduce((a,b)=> {return a+b});
+
+       
+
+            totalSumArr.push(hotspotTotal)
+
+           
 
         }
-        return {hotspotData, rewards};
+        
+        return {hotspotData, totalSumArr};
     }
 
-    const {hotspotData, rewards} = await getApiData();
+    const {hotspotData, totalSumArr} = await getApiData();
     
-    res.render("hotspot",{hotspots: hotspotData, rewards: rewards});
+    res.render("hotspot",{hotspots: hotspotData, totalSumArr: totalSumArr});
 
     
 }));
