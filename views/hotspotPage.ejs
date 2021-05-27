@@ -22,6 +22,7 @@
 
 
     <link rel="stylesheet" href="../public/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
     <style>
         #map {
@@ -1263,8 +1264,12 @@
 
                                 <div id='map' class="container m-4" style='min-width: 350px; min-height: 300px;'></div>
 
+                                <div data-v-2265de1f="" class="grid grid-cols-1 md:grid-cols-1 m-4"><div data-v-2265de1f="" class="overflow-hidden p-4">
+                                    Rewards
+                                    <div data-v-2265de1f="" class="pb-4" style="height: 450px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div><canvas id="myChart" width="682" height="250" style="display: block; width: 682px; height: 250px;" class="chartjs-render-monitor"></canvas></div></div></div>
 
-                                <div data-v-2265de1f="" class="flex flex-wrap mb-12">
+
+                                <div data-v-2265de1f="" class="flex flex-wrap mb-12 mt">
                                     <div data-v-2265de1f="" class="w-full md:w-1/3 p-4">
                                         <p data-v-2265de1f="" class="text-xl"> Hotspot Information</p>
                                         <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -1276,6 +1281,38 @@
                                                             <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
                                                                 <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
                                                                     <%= hotspot.data.name %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> today</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= today %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> yesterday</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= yesterday %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> total</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= totalAmount %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
+                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200"> monthly avg</th>
+                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
+                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
+                                                                    <%= monthlyAvg %>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -1296,22 +1333,8 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">Score</th>
-                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
-                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
-                                                                    <%= hotspot.data.score %>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-v-2265de1f="" class="hover:bg-gray-50">
-                                                            <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">Rewards</th>
-                                                            <td data-v-2265de1f="" class="px-6 py-4 whitespace-no-wrap">
-                                                                <div data-v-2265de1f="" class="text-sm leading-5 text-gray-900 hover:text-BLUE-800">
-                                                                    <%= hotspot.data.reward_scale %>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                        
+                                                        
 
 
                                                     </table>
@@ -1626,6 +1649,19 @@
                                 </div>
 
 
+                                <div data-v-2265de1f="" class="flex flex-col px-6 py-8 "><p data-v-2265de1f="" class="text-2xl"> Information &amp; Payments</p> <div data-v-2265de1f="" class="overflow-x-auto sm:-mx-6 lg:-mx-8"><div data-v-2265de1f="" class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"><div data-v-2265de1f="" class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"><table data-v-2265de1f="" class="min-w-full divide-y divide-gray-200"><thead data-v-2265de1f=""><tr data-v-2265de1f=""><th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name
+                            </th> <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Rewards (HNT/Currency)
+                            </th> <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                email
+                            </th> <th data-v-2265de1f="" class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Date
+                            </th></tr></thead> <tbody data-v-2265de1f="" class="payment-table bg-white divide-y divide-gray-200">
+
+                            </tbody></table></div></div></div></div>
+
+
 
                                 <hr data-v-2265de1f=" ">
                                 <button class="del-hotspot mt-3 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none
@@ -1667,17 +1703,7 @@
         </div>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async=" " src="https://www.googletagmanager.com/gtag/js?id=G-21RSP2T54D "></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-21RSP2T54D');
-        </script>
+        
 
         <script src="../public/js/main.js "></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
@@ -1692,9 +1718,7 @@
                 center: [lng, lat]
             });
 
-            var marker = new mapboxg1.Marker()
-                .setLngLat([lng, lat])
-                .addTo(map);
+            
         </script>
 
         <script>
@@ -1784,6 +1808,16 @@
                                 hostPaidTd.textContent = hostToBePaidTd.textContent;
                                 hostToBePaidTd.textContent = "";
                                 alert("You have paid successfully");
+                                return fetch('http://trackmyhnt.com/paid', {
+                                    method: 'post',
+                                    headers: {
+                                    'Accept': 'application/json, text/plain, */*',
+                                    'Content-Type': 'application/json'
+                                 },
+                                body: JSON.stringify({host: hostSelect.value, payment: parseFloat(hostPaidTd.textContent) })
+                                })
+                                .then((res)=> res.json())
+                                .then((data)=> console.log(data));
                             })
                     })
 
@@ -1875,6 +1909,16 @@
                                 referralPaidTd.textContent = referralToBePaidTd.textContent;
                                 referralToBePaidTd.textContent = "";
                                 alert("You have paid successfully");
+                                return fetch('http://trackmyhnt.com/paid', {
+                                    method: 'post',
+                                    headers: {
+                                    'Accept': 'application/json, text/plain, */*',
+                                    'Content-Type': 'application/json'
+                                 },
+                                body: JSON.stringify({referral: referralSelect.value, payment: parseFloat(referralPaidTd.textContent) })
+                                })
+                                .then((res)=> res.json())
+                                .then((data)=> console.log(data));
                             })
                     })
 
@@ -1966,6 +2010,16 @@
                                 partnerPaidTd.textContent = partnerToBePaidTd.textContent;
                                 partnerToBePaidTd.textContent = "";
                                 alert("You have paid successfully");
+                                return fetch('http://trackmyhnt.com/paid', {
+                                    method: 'post',
+                                    headers: {
+                                    'Accept': 'application/json, text/plain, */*',
+                                    'Content-Type': 'application/json'
+                                 },
+                                body: JSON.stringify({partner: partnerSelect.value, payment: parseFloat(partnerPaidTd.textContent) })
+                                })
+                                .then((res)=> res.json())
+                                .then((data)=> console.log(data))
                             })
                     })
 
@@ -1973,8 +2027,9 @@
         </script>
 
 
+        
         <script>
-            let deleteBtn = document.querySelector(".del-hotspot ");
+            let deleteBtn = document.querySelector(".del-hotspot");
             let hotspotId = window.location.href;
             let hotspotUrl = hotspotId.split("/ ")[4];
 
@@ -1987,7 +2042,147 @@
                     .catch(err => window.location.href = "http://trackmyhnt.com/hotspot ");
 
             });
-        </script>
+            </script>
+           
+            <script>
+            let hotId = window.location.href.split("/");
+            let hotUrl = hotId[4];
+
+            console.log("YEAH");
+            console.log(hotUrl);
+            
+            var ctx = document.getElementById('myChart').getContext('2d');
+            fetch(`https://api.helium.io/v1/hotspots/${hotUrl}/rewards/sum?min_time=-65%20day&bucket=day`)
+                .then((res)=> res.json())
+                .then((data)=> {
+    
+                    let arrTotal = [];
+                    let arrDate = [];
+                    console.log(data.data);
+                    data.data.forEach((d)=> {
+                        
+                        arrTotal.push(d.total);
+                        arrDate.push(d.timestamp.split('T')[0]);
+                    })
+                    console.log(arrTotal);
+                    var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: arrDate ,
+                    datasets: [{
+                        label: '# of Votes',
+                        data: arrTotal ,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+                })
+            
+            </script>
+
+            <script>
+                let tbody = document.querySelector(".payment-table");
+                fetch('http://trackmyhnt.com/paid')
+                    .then((res)=> res.json())
+                    .then((data)=> {
+                        console.log(data.paidArr);
+                        for(let i=0; i<data.paidArr.length; i++) {
+                            if(data.paidArr[i].host!=null) {
+                                //console.log(data.paidArr[i].host)
+                                let trow = document.createElement("TR");
+                                trow.className= "hover:bg-gray-50";
+                                let tdata1 = document.createElement("td");
+                                tdata1.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                tdata1.textContent=data.paidArr[i].host.name;
+                                trow.appendChild(tdata1);
+
+                                let tdata2 = document.createElement("td");
+                                tdata2.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                tdata2.textContent=data.paidArr[i].payment;
+                                trow.appendChild(tdata2);
+
+                                let tdata3 = document.createElement("td");
+                                tdata3.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                tdata3.textContent=data.paidArr[i].host.email;
+                                trow.appendChild(tdata3);
+
+                                let tdata4 = document.createElement("td");
+                                tdata4.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                tdata4.textContent=data.paidArr[i].createdAt;
+                                trow.appendChild(tdata4);
+
+                                tbody.appendChild(trow);
+                            }
+
+                            if(data.paidArr[i].referral) {
+                                //console.log(data.paidArr[i].referral)
+                                let rtrow = document.createElement("TR");
+                                rtrow.className= "hover:bg-gray-50";
+                                let rtdata1 = document.createElement("td");
+                                rtdata1.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                rtdata1.textContent=data.paidArr[i].referral.name;
+                                rtrow.appendChild(rtdata1);
+
+                                let rtdata2 = document.createElement("td");
+                                rtdata2.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                rtdata2.textContent=data.paidArr[i].payment;
+                                rtrow.appendChild(rtdata2);
+
+                                let rtdata3 = document.createElement("td");
+                                rtdata3.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                rtdata3.textContent=data.paidArr[i].referral.email;
+                                rtrow.appendChild(rtdata3);
+
+                                let rtdata4 = document.createElement("td");
+                                rtdata4.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                rtdata4.textContent=data.paidArr[i].referral.createdAt;
+                                rtrow.appendChild(rtdata4);
+
+                                tbody.appendChild(rtrow);
+                            }
+                            if(data.paidArr[i].partner) {
+                               // console.log(data.paidArr[i].partner)
+                                let ptrow = document.createElement("TR");
+                                ptrow.className= "hover:bg-gray-50";
+                                let ptdata1 = document.createElement("td");
+                                ptdata1.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                ptdata1.textContent=data.paidArr[i].partner.name;
+                                ptrow.appendChild(ptdata1);
+
+                                let ptdata2 = document.createElement("td");
+                                ptdata2.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                ptdata2.textContent=data.paidArr[i].payment;
+                                ptrow.appendChild(ptdata2);
+
+                                let ptdata3 = document.createElement("td");
+                                ptdata3.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                ptdata3.textContent=data.paidArr[i].partner.email;
+                                ptrow.appendChild(ptdata3);
+
+                                let ptdata4 = document.createElement("td");
+                                ptdata4.className= "px-6 py-4 whitespace-no-wrap text-gray-500";
+                                ptdata4.textContent=data.paidArr[i].partner.createdAt;
+                                ptrow.appendChild(ptdata4);
+
+                                tbody.appendChild(ptrow);
+                            }
+                        }
+                    })
+            </script>
+
 
 </body>
 
