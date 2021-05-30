@@ -1438,23 +1438,14 @@
     </div>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21RSP2T54D"></script>
+    
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
 
     <script src="../public/js/main.js"></script>
 
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-21RSP2T54D');
-    </script>
+    
 
     <script>
         var ctx = document.getElementById('barChart');
@@ -1525,6 +1516,9 @@
                 let max = data.meta.max_time;
                 let maxTime = max.split('T')[0];
                 heliumExplorer.href = `https://explorer.helium.com/accounts/${wallet}`;
+
+                walletDateArr.reverse();
+                walletTotalArr.reverse();
 
                 var barChart = new Chart(ctx1, {
                     type: 'line',

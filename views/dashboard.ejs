@@ -1316,14 +1316,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="ml-4 mt-12  text-lg text-gray-600 leading-7 font-semibold">
+                                    <!-- <div class="ml-4 mt-12  text-lg text-gray-600 leading-7 font-semibold">
                                         <a href="#">Your Hotspots</a>
                                     </div>
                                     <div class="hotspot-list pb-10 mt-2 text-sm text-gray-500 bg-white rounded-lg shadow-xl pl-4 pr-4 pt-2   p-6 mt-3 mb-10 sm:px-20 bg-white border-b border-gray-200">
 
-                                        <!-- Hotspot Area -->
+                                        
 
-                                    </div>
+                                    </div> -->
                                     <div class="flex items-center mt-10">
                                         <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"></div>
                                     </div>
@@ -1559,6 +1559,9 @@
                 walletSum.textContent = "$ " + bal + " HNT";
                 heliumExplorer.href = `https://explorer.helium.com/accounts/${wallet}`;
 
+                walletDateArr.reverse();
+                walletTotalArr.reverse();
+
                 var barChart = new Chart(ctx1, {
                     type: 'line',
                     data: {
@@ -1598,20 +1601,7 @@
        
             
     </script>
-    <script>
-        const hotspotList = document.querySelector(".hotspot-list");
-        fetch("http://trackmyhnt.com/hotspots")
-            .then((res) => res.json())
-            .then((data) => {
-                for (i = 0; i < data.length; i++) {
-                    let elem = document.createElement("a");
-                    elem.textContent = data[i].hotspot;
-                    elem.href = `http://trackmyhnt.com/hotspot/${data[i].hotspot}`;
-                    hotspotList.appendChild(elem);
-                }
-            })
-            .catch((err) => console.log(err));
-    </script>
+   
 </body>
 
 </html>
