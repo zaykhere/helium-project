@@ -46,7 +46,7 @@ router.put("/savehost/:id", protect, asyncHandler(async(req,res)=>{
 router.put("/payhost/:id", protect, asyncHandler(async(req,res)=>{
     const host = await Host.findOne({_id: req.params.id});
     if(!host) return res.send("Error! No host found");
-    host.toBePaid = null;
+    host.toBePaid = host.toBePaid - req.body.paid ;
     host.paid = req.body.paid;
     await host.save();
     res.json({host});
