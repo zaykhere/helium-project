@@ -114,13 +114,13 @@ router.post("/paid", protect, asyncHandler(async(req,res)=> {
         user: req.user._id
     });
     const savePayment = await payment.save();
-    console.log(savePayment);
+   // console.log(savePayment);
     res.end();
 }))
 
 router.get("/paid", protect, asyncHandler(async(req,res)=>{
     let paidArr = await Payment.find({user: req.user._id}).populate('host').populate('referral').populate('partner');
-    console.log(paidArr);
+   // console.log(paidArr);
     res.json({paidArr: paidArr});
 
 }))

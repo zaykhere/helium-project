@@ -1870,8 +1870,15 @@ Amount to Pay
                             .then((res) => res.json())
                             .then((data2) => {
                                 hostTotalTd.textContent = data.data.total;
-                                hostPaidTd.textContent = 0;
+                               // hostPaidTd.textContent = 0;
                                 hostToBePaidTd.textContent = hostToBePaid;
+                                return fetch(`http://trackmyhnt.com/host/host/${hostSelect.value}`)
+                                    .then((res)=> res.json())
+                                    .then((data)=> {
+                                        
+                                        hostPaidTd.textContent = data.host.paid;
+                                    })
+                                    .catch((err)=> console.log(err))
                             })
                             .catch((err) => console.log(err))
                     });
@@ -1899,7 +1906,7 @@ Amount to Pay
                         fetch(`http://trackmyhnt.com/host/payhost/${hostSelect.value}`, payPut)
                             .then((res) => res.json())
                             .then((data3) => {
-                                hostPaidTd.textContent = input1.value;
+                                hostPaidTd.textContent = parseFloat(hostPaidTd.textContent) + parseFloat(input1.value);
                                 hostToBePaidTd.textContent = hostToBePaid - input1.value;
                                 alert("You have paid successfully");
                                 return fetch('http://trackmyhnt.com/paid', {
@@ -1981,8 +1988,15 @@ Amount to Pay
                             .then((res) => res.json())
                             .then((data2) => {
                                 referralTotalTd.textContent = data.data.total;
-                                referralPaidTd.textContent = 0;
+                                //referralPaidTd.textContent = 0;
                                 referralToBePaidTd.textContent = referralToBePaid;
+                                return fetch(`http://trackmyhnt.com/referral/referral/${referralSelect.value}`)
+                                    .then((res)=> res.json())
+                                    .then((data)=> {
+                                        
+                                        referralPaidTd.textContent = data.referral.paid;
+                                    })
+                                    .catch((err)=> console.log(err))
                             })
                             .catch((err) => console.log(err))
                     });
@@ -2008,7 +2022,7 @@ Amount to Pay
                         fetch(`http://trackmyhnt.com/referral/payreferral/${referralSelect.value}`, payPut)
                             .then((res) => res.json())
                             .then((data3) => {
-                                referralPaidTd.textContent = input2.value;
+                                referralPaidTd.textContent = parseFloat(referralPaidTd.textContent) + parseFloat(input2.value);
                                 referralToBePaidTd.textContent = referralToBePaid - input2.value;
                                 alert("You have paid successfully");
                                 return fetch('http://trackmyhnt.com/paid', {
@@ -2090,8 +2104,15 @@ Amount to Pay
                             .then((res) => res.json())
                             .then((data2) => {
                                 partnerTotalTd.textContent = data.data.total;
-                                partnerPaidTd.textContent = 0;
+                             //   partnerPaidTd.textContent = 0;
                                 partnerToBePaidTd.textContent = partnerToBePaid;
+                                return fetch(`http://trackmyhnt.com/partner/partner/${partnerSelect.value}`)
+                                    .then((res)=> res.json())
+                                    .then((data)=> {
+                                        
+                                        partnerPaidTd.textContent = data.partner.paid;
+                                    })
+                                    .catch((err)=> console.log(err))
                             })
                             .catch((err) => console.log(err))
                     });
@@ -2117,7 +2138,7 @@ Amount to Pay
                         fetch(`http://trackmyhnt.com/partner/paypartner/${partnerSelect.value}`, payPut)
                             .then((res) => res.json())
                             .then((data3) => {
-                                partnerPaidTd.textContent = input3.value;
+                                partnerPaidTd.textContent = parseFloat(partnerPaidTd.textContent) + parseFloat(input3.value);
                                 partnerToBePaidTd.textContent = partnerToBePaid - input3.value;
                                 alert("You have paid successfully");
                                 return fetch('http://trackmyhnt.com/paid', {

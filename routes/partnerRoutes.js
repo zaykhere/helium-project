@@ -47,9 +47,18 @@ router.put("/paypartner/:id", protect, asyncHandler(async(req,res)=>{
     const partner = await Partner.findOne({_id: req.params.id});
     if(!partner) return res.send("Error! No partner found");
     partner.toBePaid = partner.toBePaid - req.body.paid;
+   
+    if(partner.paid) {
+        console.log(partner.paid);
+        partner.paid= partner.paid + req.body.paid;
+        await partner.save();
+        res.json({partner});
+    }
+    else {
     partner.paid = req.body.paid;
     await partner.save();
     res.json({partner});
+    }
 }))
 
 module.exports = router;

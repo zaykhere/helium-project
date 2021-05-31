@@ -36,7 +36,7 @@ router.get("/host/:id", protect, asyncHandler(async(req,res)=> {
 router.put("/savehost/:id", protect, asyncHandler(async(req,res)=>{
     const host = await Host.findOne({_id: req.params.id});
     if(!host) return res.send("Error! Host not found");
-    console.log(host);
+    //console.log(host);
     host.toBePaid = req.body.toBePaid; 
     await host.save();
     res.json({host});
@@ -47,9 +47,18 @@ router.put("/payhost/:id", protect, asyncHandler(async(req,res)=>{
     const host = await Host.findOne({_id: req.params.id});
     if(!host) return res.send("Error! No host found");
     host.toBePaid = host.toBePaid - req.body.paid ;
+  
+    if(host.paid) {
+        console.log(host.paid);
+        host.paid= host.paid + req.body.paid;
+        await host.save();
+        res.json({host});
+    }
+    else {
     host.paid = req.body.paid;
     await host.save();
     res.json({host});
+    }
 }))
 
 module.exports = router;
